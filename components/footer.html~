@@ -1,0 +1,43 @@
+<div id="footer_social">
+    <a id="footer_social_instagram" href="https://www.instagram.com/collectif.articho/" target="_blank">
+	<img src="../../resources/statics/social/icon-instagram.svg"
+	     onmouseover="changeImage(this, '_hover');"
+	     onmouseout="restoreImage(this, '_hover');">
+    </a>
+    <a id="footer_social_facebook" href="https://www.facebook.com/collectifarticho/" target="_blank">
+	<img src="../../resources/statics/social/icon-facebook.svg"
+	     onmouseover="changeImage(this, '_hover');"
+	     onmouseout="restoreImage(this, '_hover');">
+    </a>
+    <a id="footer_social_linkedin" href="https://fr.linkedin.com/company/collectif-arti-ch%C3%B4" target="_blank">
+	<img src="../../resources/statics/social/icon-linkedin.svg"
+	     onmouseover="changeImage(this, '_hover');"
+	     onmouseout="restoreImage(this, '_hover');">
+    </a>
+</div>
+
+<div id="footer_line"></div>
+
+<div id="footer_info">
+    <a id="footer_info_a_propos">
+	<span>À propos</span>
+    </a>
+    <a id="footer_info_mentions_legales" href="src/html/mentions_legales.html">
+	<span>Mentions légales</span>
+    </a>
+    <a id="footer_info_web_site">
+	<span>Site web</span>
+	<!-- Nom de l'hébergeur du site.
+	     Adresse de l'hébergeur.
+	     Coordonnées de l'hébergeur (téléphone, e-mail). -->
+    </a>
+    <a id="footer_info_contact">
+	<span>Contact</span>
+    </a>
+</div>
+
+
+
+<div id="footer_copyright">
+    <span>2024 ARTI/CHÔ</span>
+</div>
