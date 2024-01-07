@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Two+Tone|Material+Icons+Sharp">
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<!-- Leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 	
 	<link rel="stylesheet" href="../../resources/css/style.css">
@@ -17,7 +20,7 @@
 	<link rel="stylesheet" href="../../resources/css/footer.css">
 	<script src="../../resources/js/script.js"></script>
 
-
+	
 	<link rel="stylesheet" href="../../resources/css/contact.css">
 	
     </head>
@@ -27,75 +30,117 @@
 
 	<div class="container">
 
+	    <div class="bunch justify">
 
-	    <h1>Contact</h1>
+		<div class="bunch vertical justify">
+		    <div id="container_map">
+			<div id="map"></div>
+		    </div>
+		    <div id="map_contributer">
+			<h5>
+			    <a style="color: inherit;" href="https://www.openstreetmap.org/copyright">OpenStreetMap </a>
+			    - contributors
+			    <a style="color: inherit;" href="https://carto.com/attributions">CARTO</a>
+			</h5>
+		    </div>
+		</div>
 
-	    <div class="bunch">
-		<div class="contact_img">
-		    <img class="bigger-svg" src="../resources/statics/social/icon_blue-email.svg">
+		<div id="container_contact">
+		    <h1>Contact</h1>
+
+		    <div class="bunch contact_bunch">
+			<div class="contact_img">
+			    <img class="bigger-svg" src="../resources/statics/social/icon_blue-email.svg">
+			</div>
+			<div>
+			    <h2>Email</h2>
+			    <a href="mailto:contact@collectifarticho.com">contact@collectifarticho.com</a>
+			</div>
+		    </div>
+
+		    <div class="bunch contact_bunch">
+			<div class="contact_img">
+			    <img class="bigger-svg" src="../resources/statics/social/icon_blue-instagram.svg">
+			</div>
+			<div>
+			    <h2>Instagram</h2>
+			    <a href="https://www.instagram.com/collectif.articho/" target="_blank">
+				https://www.instagram.com/collectif.articho/
+			    </a>
+			</div>
+		    </div>
+		    
+		    <div class="bunch contact_bunch">
+			<div class="contact_img">
+			    <img class="bigger-svg" src="../resources/statics/social/icon_blue-facebook.svg">
+			</div>
+			<div>
+			    <h2>Facebook</h2>
+			    <a href="https://www.facebook.com/collectifarticho/" target="_blank">
+				https://www.facebook.com/collectifarticho/
+			    </a>
+			</div>
+		    </div>
+
+		    <div class="bunch contact_bunch">
+			<div class="contact_img">
+			    <img class="bigger-svg" src="../resources/statics/social/icon_blue-linkedin.svg">
+			</div>
+			<div>
+			    <h2>Linkedin</h2>
+			    <a href="https://fr.linkedin.com/company/collectif-arti-ch%C3%B4" target="_blank">
+				https://fr.linkedin.com/company/collectif-arti-ch%C3%B4
+			    </a>
+			</div>
+		    </div>
+
+		    <h2>Site</h2>
+		    <p>Contacter nous ou venez nous rendre visite aux adresses suivantes</p>
+		    
+		    <h3>Studio de création</h3>
+		    <p>Le 6b / 6-10 Quai de Seine
+			93200 SAINT-DENIS</p>
+
+		    <h3>Atelier de menuiserie</h3>
+		    <p>121 rue du Parc
+			93130 NOISY-LE-SEC</p>
 		</div>
-		<div>
-		    <h2>Email</h2>
-		    <a href="mailto:contact@collectifarticho.com">contact@collectifarticho.com</a>
-		</div>
+
 	    </div>
-
-	    <div class="bunch">
-		<div class="contact_img">
-		    <img class="bigger-svg" src="../resources/statics/social/icon_blue-instagram.svg">
-		</div>
-		<div>
-		    <h2>Instagram</h2>
-		    <a href="https://www.instagram.com/collectif.articho/" target="_blank">
-			https://www.instagram.com/collectif.articho/
-		    </a>
-		</div>
-	    </div>
-	    
-	    <div class="bunch">
-		<div class="contact_img">
-		    <img class="bigger-svg" src="../resources/statics/social/icon_blue-facebook.svg">
-		</div>
-		<div>
-		    <h2>Facebook</h2>
-		    <a href="https://www.facebook.com/collectifarticho/" target="_blank">
-			https://www.facebook.com/collectifarticho/
-		    </a>
-		</div>
-	    </div>
-
-	    <div class="bunch">
-		<div class="contact_img">
-		    <img class="bigger-svg" src="../resources/statics/social/icon_blue-linkedin.svg">
-		</div>
-		<div>
-		    <h2>Linkedin</h2>
-		    <a href="https://fr.linkedin.com/company/collectif-arti-ch%C3%B4" target="_blank">
-			https://fr.linkedin.com/company/collectif-arti-ch%C3%B4
-		    </a>
-		</div>
-	    </div>
-
-
-	    
-	<h2>Site</h2>
-	<p>Contacter nous ou venez nous rendre visite aux adresses suivantes</p>
-	
-	<h3>Studio de création</h3>
-	<p>Le 6b / 6-10 Quai de Seine
-	    93200 SAINT-DENIS</p>
-
-	<h3>Atelier de menuiserie</h3>
-	<p>121 rue du Parc
-	    93130 NOISY-LE-SEC</p>
-
-	    
 	</div>
 
 	<div id="footer"></div>
 	
 	<script>
-	 /* ### */
+
+	 
+	 var map = L.map('map');
+
+	 var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	     attribution: false,
+	     subdomains: 'abcd',
+	     maxZoom: 20
+	 }).addTo(map);
+
+	 var customIcon = L.divIcon({
+	     className: 'custom-icon',
+	     html: '<img src="../resources/statics/articho/articho.svg">',
+	     iconSize: [40, 40],
+	     iconAnchor: [20, 20],
+	 });
+
+	 L.marker([48.89791126893694, 2.4422093678536965], { icon: customIcon }).addTo(map);
+	 L.marker([48.93814555127031, 2.342863469706487], { icon: customIcon }).addTo(map);
+
+	 var markerLatLngs = [
+	     [48.89791126893694, 2.4422093678536965],
+	     [48.93814555127031, 2.342863469706487]
+	 ];
+
+	 map.fitBounds(markerLatLngs);
+
+
+	 
 	</script>
 	
     </body>

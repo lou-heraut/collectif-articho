@@ -1,27 +1,48 @@
-<a id="articho_logo" href="../index.html">
+<a id="articho_logo" href="../index.html" onclick="deselectTab()">
 </a>
 <div id="header_tab">
-    <a id="header_tab_amenagements" onclick="selectButton(this)">
-	<span>Aménagements</span>
-    </a>
+    
+    <div onmouseover="showMenu('menu_projets')" onmouseleave="hideMenu('menu_projets')">
+        <a id="header_tab_projets" style="width: 4rem; justify-content: center;" onclick="selectTab('header_tab_projets')">
+	    <span>Projets</span>
+        </a>
+        <div id="menu_projets" class="menu" onmouseover="showMenu('menu_projets')" onmouseleave="hideMenu('menu_projets')">
+            <div id="container_menu">
+		<a id="header_tab_amenagements" onclick="selectTab(['header_tab_projets', 'header_tab_amenagements'])">
+		    <span>Aménagements</span>
+		</a>
+		<a id="header_tab_microarchitectures" onclick="selectTab('header_tab_microarchitectures')">
+                    <span>Microarchitectures</span>
+                </a>
+		<a id="header_tab_signaletique" onclick="selectTab('header_tab_signaletique')">
+		    <span>Signalétiques</span>
+		</a>
+                <a id="header_tab_chantiers_participatifs" onclick="selectTab('header_tab_chantiers_participatifs')">
+                    <span>Chantiers participatifs</span>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="sep">|</div>
-    <a id="header_tab_signaletiques" onclick="selectButton(this)">
-	<span>Signalétiques</span>
-    </a>
-    <div class="sep">|</div>
-    <a id="header_tab_microarchitectures" onclick="selectButton(this)">
-	<span>Microarchitectures</span>
-    </a>
-    <div class="sep">|</div>
-    <a id="header_tab_mobiliers" onclick="selectButton(this)">
+
+    
+    <a id="header_tab_mobiliers" style="width: 5rem; justify-content: center;" onclick="selectTab('header_tab_mobiliers')">
 	<span>Mobiliers</span>
     </a>
     <div class="sep">|</div>
-    <a id="header_tab_chantiers_participatifs" onclick="selectButton(this)">
-	<span>Chantiers participatifs</span>
-    </a>
-    <div class="sep">|</div>
-    <a id="header_tab_atelier" onclick="selectButton(this)">
+
+    <a id="header_tab_ateliers" style="width: 4rem; justify-content: center;" onclick="selectTab('header_tab_ateliers')">
 	<span>Ateliers</span>
     </a>
+    <div class="sep">|</div>
+    
+    <a id="header_tab_contact" style="width: 8.2rem; justify-content: center;" href="../pages/contact.html" onclick="selectTab('header_tab_contact')">
+	<span>Nous contacter</span>
+    </a>
+    
 </div>
+
+
+
+
+

@@ -82,8 +82,6 @@ p {
 }
 
 
-
-
 a {
     color: #213589;
     text-decoration: none;
@@ -101,7 +99,16 @@ a:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: center;   
+}
+.bunch.justify {
+    justify-content: center; 
+}
+.bunch.vertical {
+    flex-direction: column;
+}
+.bunch.vertical.justify {
+    justify-content: center; 
 }
 
 button {
@@ -145,17 +152,12 @@ button:hover .notif {
     display: inline-block;
 }
 
-
-
 .container {
     margin-top: 5rem;
     margin-bottom: 2rem;
     margin-left: 4rem;
     margin-right: 4rem;
 }
-
-
-
 
 
 
