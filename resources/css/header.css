@@ -1,7 +1,7 @@
 #header {
     position: fixed;
-    margin-left: 4rem; 
-    margin-right: 4rem; 
+    padding-left: 4rem;
+    padding-right: 4rem; 
     top: 0px;
     left: 0px;
     height: 5rem;
@@ -24,6 +24,7 @@
 
 #header_tab {
     position: absolute;
+    margin-right: 4rem;
     right: 0px;
     height: 100%;
     display: flex;
@@ -49,12 +50,21 @@
 }
 
 #header_tab a.selected {
-    background: url("../../resources/statics/assets/button_selected.png") center/cover no-repeat;
+    background: url("../../resources/statics/assets/tab_selected.svg") center/cover no-repeat;
     background-size: 6rem;
     background-position-y: bottom;
     color: #213589;
     font-weight: normal;
 }
+
+#header_tab a.subtab.selected {
+    background: url("../../resources/statics/assets/subtab_selected.svg") left/cover no-repeat;
+    background-size: 6rem;
+    background-position-y: center;
+    color: #213589;
+    font-weight: normal;
+}
+
 #header_tab a:hover,
 a:focus {
     color: #213589;
