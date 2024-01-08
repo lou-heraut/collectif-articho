@@ -152,8 +152,6 @@ button:hover .notif {
 }
 
 .container {
-    margin-top: 5rem;
-    margin-bottom: 2rem;
     margin-left: 4rem;
     margin-right: 4rem;
 }
@@ -184,7 +182,7 @@ li {
   margin-right: 0rem;
 }
 #slideshow figure img {
-    height: calc(100vh - 5rem - 2rem);
+    height: 60vh;
 }
 
 .container_title {
@@ -198,12 +196,14 @@ li {
     font-size: 3.2rem;
     margin-top: 0rem;
     margin-bottom: 0rem;
+    text-align: center;
 }
 .subtitle {
     font-family: 'Faune-Regular', sans-serif;
     font-size: 1.2rem;
     margin-top: 0rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 #container_valeur {
@@ -302,7 +302,7 @@ li {
     margin-left: auto;
     margin-right: auto;
     padding-top: 1rem;
-    width: 30rem;
+    max-width: 30rem;
     padding-bottom: 1rem;
 }
 
@@ -317,7 +317,7 @@ li {
 }
 
 #container_team img {
-    width: 28rem;
+    width: 30vw;
     padding-bottom: 1rem;
 }
 
@@ -365,7 +365,7 @@ li {
     margin-bottom: 0.5rem;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -382,35 +382,26 @@ li {
 
 
 
+
+
+
+
 #container_soutiens {
-    margin-top: 0.5rem;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-}
-#gallery_soutiens {
-    display: grid;
-    grid-template-columns: repeat(15, 3rem);
-    grid-template-rows: repeat(12, 1rem);
-    grid-gap: 1rem;
-    grid-auto-flow: dense;
-    width: 60rem;
-}
-
-.soutiens {
-    position: relative;
+    margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    max-width: 40rem;
 }
 
 .soutiens img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 95%;
-    height: 95%;
-    object-fit: cover;
+    max-width: 12rem;
+    padding: 0.5rem;
 }
 
 
@@ -420,7 +411,7 @@ li {
     margin-left: auto;
     margin-right: auto;
     padding-top: 1rem;
-    width: 70rem;
+    max-width: 70rem;
     padding-bottom: 1rem;
     font-size: 1.05rem;
 }
@@ -439,17 +430,19 @@ li {
 
 
 
-@media (max-width: 768px) {
-    /* #back { */
-    /* flex-direction: column; */
-    /* align-items: stretch; */
-    /* }  */
-
-    .gallery {
-	width: 100vw;
-	margin-left: 20px;
-	top: 100vw;
+@media (max-width: 1000px) {
+    .container {
+	margin-left: 2rem;
+	margin-right: 2rem;
     }
+
+    #container_team img {
+	width: 100%;
+	padding-bottom: 1rem;
+    }
+
+    
+    
 } 
 
 
