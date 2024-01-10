@@ -30,9 +30,9 @@
 
 	<div class="container">
 
-	    <div class="bunch justify">
+	    <div id="container_map_contact">
 
-		<div class="bunch vertical justify">
+		<div id="container_map_contributer">
 		    <div id="container_map">
 			<div id="map"></div>
 		    </div>
@@ -115,6 +115,8 @@
 
 	 
 	 var map = L.map('map');
+	 
+	 map.removeControl(map.zoomControl);
 
 	 var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
 	     attribution: false,

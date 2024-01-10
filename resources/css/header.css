@@ -1,5 +1,5 @@
 #header {
-    position: fixed;
+    position: sticky;
     padding-left: 4rem;
     padding-right: 4rem; 
     top: 0px;
@@ -9,13 +9,11 @@
     z-index: 10;
     padding-top: 1rem;
     padding-bottom: 1rem;
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 #articho_logo {
@@ -107,6 +105,7 @@ a:focus {
     padding-right: 1rem;
     padding-bottom: 1.2rem;
     width: 13rem;
+    z-index: 10;
 }
 #container_menu a {
     background-color: #ffffff;
@@ -140,9 +139,12 @@ a:focus {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     #header {
 	justify-content: center;
+	padding-left: 1rem;
+	padding-right: 1rem; 
+	width: calc(100vw - 2rem);
     }
     
 } 

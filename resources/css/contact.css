@@ -15,9 +15,22 @@ h4 {
 }
 
 
+#container_map_contact {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
 .contact_bunch {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
 
@@ -37,16 +50,29 @@ h4 {
 
 #container_contact {
     position: relative;
-    margin-left: 3rem;
-    margin-right: 6rem;
-}
-
-#container_map {
-    position: relative;
+    margin-top: 1.5rem;
     margin-left: 3rem;
     margin-right: 3rem;
-    height: 30rem;
-    width: 30rem;
+    margin-bottom: 1.5rem;
+}
+
+
+#container_map_contributer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+#container_map {
+    position: relative;
+    height: 30vw;
+    width: 30vw;
     z-index: 0;
     border-radius: 50%;
     overflow: hidden;
@@ -69,3 +95,13 @@ h5 {
     color: #AAA;
     font-weight: normal;
 }
+
+
+@media (max-width: 768px) {
+    #container_map {
+	height: 80vw;
+	width: 80vw;
+    }
+    
+} 
+
