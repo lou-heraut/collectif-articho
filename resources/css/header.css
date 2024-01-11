@@ -35,15 +35,17 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    margin-left: 1rem;
+    margin-right: 1rem; 
 }
 #header_tab a {
     background-color: #ffffff;
     color: #959dbf;
-    font-family: 'Faune-Regular', sans-serif;
-    font-size: 1.1rem;
+    font-family: 'Faune-Bold', sans-serif;
+    font-size: 1.2rem;
     border: none;
     padding: 0 0.5rem;
-    margin: 0;
+    margin: 0 0.5rem;
     background-color: transparent;
     cursor: pointer;
     touch-action: manipulation;

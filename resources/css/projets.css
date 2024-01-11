@@ -16,8 +16,8 @@
     font-family: 'Faune-Regular', sans-serif;
     font-size: 1.1rem;
     border: none;
-    padding: 0 1.2rem;
-    margin: 0;
+    padding: 0 0.5rem;
+    margin: 0 0.5rem;
     background-color: transparent;
     cursor: pointer;
     touch-action: manipulation;
@@ -67,6 +67,7 @@ a:focus {
 .projet_thumbnail img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .projet_thumbnail:hover .overlay {
@@ -100,6 +101,12 @@ a:focus {
 }
 
 @media (max-width: 768px) {
-    
+    #container_projets {
+	max-width: 100%;
+    }
+    .projet_thumbnail {
+	width: 100%;
+	height: 65vw;
+    }
 } 
 
