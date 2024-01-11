@@ -16,6 +16,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
+    
+   fetch('../../components/projets_tab.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('projets_tab').innerHTML = html;
+
+            var selectedTabIdsJson = localStorage.getItem('selectedTabId');
+            if (selectedTabIdsJson) {
+                var selectedTabIds = JSON.parse(selectedTabIdsJson);
+
+                selectedTabIds.forEach(function (tabId) {
+                    var selectedTab = document.getElementById(tabId);
+                    if (selectedTab) {
+                        selectedTab.classList.add('selected');
+                    }
+                });
+            }
+        });
+    
     fetch('../../components/footer.html')
         .then(response => response.text())
         .then(html => {
@@ -43,7 +62,6 @@ function selectTab(selectedTabIds) {
     if (!Array.isArray(selectedTabIds)) {
         selectedTabIds = [selectedTabIds];
     }
-    // localStorage.setItem('selectedTabId', tab.id);
     localStorage.setItem('selectedTabId', JSON.stringify(selectedTabIds));
     
     selectedTabIds.forEach(function (tabId) {

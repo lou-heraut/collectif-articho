@@ -3,21 +3,26 @@
 <div id="header_tab">
     
     <div onmouseover="showMenu('menu_projets')" onmouseleave="hideMenu('menu_projets')">
-        <a id="header_tab_projets" class="tab" style="width: 4rem; justify-content: center;" onclick="selectTab('header_tab_projets')">
+        <a id="header_tab_projets" class="tab" href="../pages/projets.html"
+	   onclick="selectTab(['header_tab_projets', 'projets'])">
 	    <span>Projets</span>
         </a>
         <div id="menu_projets" class="menu" onmouseover="showMenu('menu_projets')" onmouseleave="hideMenu('menu_projets')">
             <div id="container_menu">
-		<a id="header_tab_amenagements" class="subtab" onclick="selectTab(['header_tab_projets', 'header_tab_amenagements'])">
+		<a id="header_tab_amenagements" class="subtab" href="../pages/projets_amenagements.html"
+		   onclick="selectTab(['header_tab_projets', 'header_tab_amenagements', 'projets_amenagements'])">
 		    <span>Aménagements</span>
 		</a>
-		<a id="header_tab_microarchitectures" class="subtab" onclick="selectTab(['header_tab_projets', 'header_tab_microarchitectures'])">
+		<a id="header_tab_microarchitectures" class="subtab" href="../pages/projets_microarchitectures.html"
+		   onclick="selectTab(['header_tab_projets', 'header_tab_microarchitectures', 'projets_microarchitectures'])">
                     <span>Microarchitectures</span>
                 </a>
-		<a id="header_tab_signaletique" class="subtab" onclick="selectTab(['header_tab_projets', 'header_tab_signaletique'])">
+		<a id="header_tab_signaletique" class="subtab" href="../pages/projets_signaletique.html"
+		   onclick="selectTab(['header_tab_projets', 'header_tab_signaletique', 'projets_signaletique'])">
 		    <span>Signalétiques</span>
 		</a>
-                <a id="header_tab_chantiers_participatifs" class="subtab" onclick="selectTab(['header_tab_projets', 'header_tab_chantiers_participatifs'])">
+                <a id="header_tab_chantiers_participatifs" class="subtab" href="../pages/projets_chantiers_participatifs.html"
+		   onclick="selectTab(['header_tab_projets', 'header_tab_chantiers_participatifs', 'projets_chantiers_participatifs'])">
                     <span>Chantiers participatifs</span>
                 </a>
             </div>
@@ -26,17 +31,17 @@
     <div class="sep">|</div>
 
     
-    <a id="header_tab_mobiliers" class="tab" style="width: 5rem; justify-content: center;" onclick="selectTab('header_tab_mobiliers')">
+    <a id="header_tab_mobiliers" class="tab" onclick="selectTab('header_tab_mobiliers')">
 	<span>Mobiliers</span>
     </a>
     <div class="sep">|</div>
 
-    <a id="header_tab_ateliers" class="tab" style="width: 4rem; justify-content: center;" onclick="selectTab('header_tab_ateliers')">
+    <a id="header_tab_ateliers" class="tab" onclick="selectTab('header_tab_ateliers')">
 	<span>Ateliers</span>
     </a>
     <div class="sep">|</div>
     
-    <a id="header_tab_contact" class="tab" style="width: 8.2rem; justify-content: center;" href="../pages/contact.html" onclick="selectTab('header_tab_contact')">
+    <a id="header_tab_contact" class="tab" href="../pages/contact.html" onclick="selectTab('header_tab_contact')">
 	<span>Nous contacter</span>
     </a>
     
