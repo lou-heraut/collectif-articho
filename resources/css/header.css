@@ -18,7 +18,7 @@
 
 #articho_logo {
     position: relative;
-    background: url("../../resources/statics/articho/articho_logo.svg") center/cover no-repeat;
+    background: url("/resources/statics/articho/articho_logo.svg") center/cover no-repeat;
     background-size: 100%;
     width: 14rem;
     height: 4rem;
@@ -56,7 +56,7 @@
 }
 
 #header_tab a.selected {
-    background: url("../../resources/statics/assets/tab_selected.svg") center/cover no-repeat;
+    background: url("/resources/statics/assets/tab_selected.svg") center/cover no-repeat;
     background-size: 6rem;
     background-position-y: bottom;
     color: #213589;
@@ -64,7 +64,7 @@
 }
 
 #header_tab a.subtab.selected {
-    background: url("../../resources/statics/assets/subtab_selected.svg") left/cover no-repeat;
+    background: url("/resources/statics/assets/subtab_selected.svg") left/cover no-repeat;
     background-size: 6rem;
     background-position-y: center;
     color: #213589;
@@ -127,7 +127,7 @@ a:focus {
     white-space: nowrap;
 }
 #container_menu a.selected {
-    background: url("../../resources/statics/assets/button_selected.png") center/cover no-repeat;
+    background: url("/resources/statics/assets/button_selected.png") center/cover no-repeat;
     background-size: 6rem;
     color: #213589;
     background-position-y: bottom;

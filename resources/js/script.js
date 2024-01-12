@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-   fetch('../../components/header.html')
+   fetch('/components/header.html')
         .then(response => response.text())
         .then(html => {
             document.getElementById('header').innerHTML = html;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     
-   fetch('../../components/projets_tab.html')
+   fetch('/components/projets_tab.html')
         .then(response => response.text())
         .then(html => {
             document.getElementById('projets_tab').innerHTML = html;
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     
-    fetch('../../components/footer.html')
+    fetch('/components/footer.html')
         .then(response => response.text())
         .then(html => {
             document.getElementById('footer').innerHTML = html;

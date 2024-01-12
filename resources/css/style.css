@@ -2,42 +2,42 @@
 /* Faune Display Black */
 @font-face {
     font-family: 'Faune-Black';
-    src: url('../../resources/fonts/faune.display-black.otf') format('opentype');
+    src: url('/resources/fonts/faune.display-black.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 /* Faune Display Bold Italic */
 @font-face {
     font-family: 'Faune-BoldItalic';
-    src: url('../../resources/fonts/faune.display-bold-italic.otf') format('opentype');
+    src: url('/resources/fonts/faune.display-bold-italic.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 /* Faune Display Thin */
 @font-face {
     font-family: 'Faune-Thin';
-    src: url('../../resources/fonts/faune.display-thin.otf') format('opentype');
+    src: url('/resources/fonts/faune.display-thin.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 /* Faune Text Bold */
 @font-face {
     font-family: 'Faune-Bold';
-    src: url('../../resources/fonts/faune.text-bold.otf') format('opentype');
+    src: url('/resources/fonts/faune.text-bold.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 /* Faune Text Italic */
 @font-face {
     font-family: 'Faune-Italic';
-    src: url('../../resources/fonts/faune.text-italic.otf') format('opentype');
+    src: url('/resources/fonts/faune.text-italic.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 /* Faune Text Regular */
 @font-face {
     font-family: 'Faune-Regular';
-    src: url('../../resources/fonts/faune.text-regular.otf') format('opentype');
+    src: url('/resources/fonts/faune.text-regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -51,35 +51,92 @@ body {
     font-size: 1rem;
 }
 
+
 h1 {
+    font-weight: normal;
     font-family: 'Faune-Bold', sans-serif;
-    font-size: 2.2rem;
+    font-size: 3.2rem;
+    
+    margin-top: 0rem;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 0rem;
 }
 
 h2 {
+    font-weight: normal;
     font-family: 'Faune-Black', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-top: 0rem;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 0rem;
 }
 
 h3 {
-    font-family: 'Faune-BoldItalic', sans-serif;
-    font-size: 1rem;
-    margin-top: 0.5rem;
+    font-weight: normal;
+    font-family: 'Faune-Black', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 0rem;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 0rem;
 }
 
 h4 {
-    font-family: 'Faune-Bold', sans-serif;
+    font-weight: normal;
+    font-family: 'Faune-Black', sans-serif;
+    font-size: 1.4rem;
+    color: #fec37e;
+    margin-top: 0rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0rem;
+}
+
+h5 {
+    font-weight: normal;
+    font-family: 'Faune-BoldItalic', sans-serif;
     font-size: 1rem;
-    margin-bottom: 0.2rem;
+    margin-top: 0rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0rem;
 }
 
 p {
-    margin-top: -0.1rem;
-    margin-bottom: 0rem;
+    font-size: 1.1rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 32rem;
 }
+
+ul {
+    font-size: 1.1rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 27rem;
+}
+li {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.text_center {
+    text-align: center;
+}
+
+hr {
+    border: none;
+    background: url("/resources/statics/assets/line.svg") center/cover no-repeat;
+    background-size: 80%;
+    height: 0.7rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin: 0;
+}
+
+
 
 a {
     color: #213589;
@@ -151,25 +208,22 @@ button:hover .notif {
     display: inline-block;
 }
 
+
+
+
 .container {
     margin-left: 4rem;
     margin-right: 4rem;
 }
-li {
-  margin: 0.5rem 0;
-}
-
-
-
 
 #slideshow {
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     display: flex;
     gap: 0.7rem;
-    /* margin-top: 5rem; */
     padding-right: 4rem;
     padding-left: 4rem;
+    margin-bottom: 2rem;
 }
 #slideshow figure {
   display: flex;
@@ -185,34 +239,13 @@ li {
     height: 60vh;
 }
 
-.container_title {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center; 
-}
-.title {
-    font-family: 'Faune-Bold', sans-serif;
-    font-size: 3.2rem;
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-    text-align: center;
-}
-.subtitle {
-    font-family: 'Faune-Regular', sans-serif;
-    font-size: 1.2rem;
-    margin-top: 0rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
 #container_valeur {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 1rem;
 }
 .valeur {
@@ -232,19 +265,6 @@ li {
     margin-left: 3rem;
     margin-right: 3rem;
 }
-.valeur p {
-    color: #fec37e;
-    font-family: 'Faune-Black', sans-serif;
-    font-size: 1.4rem;
-}
-
-.line {
-    background: url("../../resources/statics/assets/line.svg") center/cover no-repeat;
-    background-size: 80%;
-    height: 0.7rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
 
 
 #container_offre {
@@ -262,7 +282,7 @@ li {
     touch-action: manipulation;
 }
 #container_offre a:hover{
-    background: url("../../resources/statics/assets/offre_hover.svg") center/cover no-repeat;
+    background: url("/resources/statics/assets/offre_hover.svg") center/cover no-repeat;
     background-size: 80%;
     background-position-y: center;
     color: #213589;
@@ -280,32 +300,14 @@ li {
     justify-content: center;
     text-align: center;
 }
-.offre h1 {
-    margin-top: 0rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-bottom: 0.2rem;
-    font-family: 'Faune-Bold', sans-serif;
-    font-size: 2rem;
-    line-height: 120%;
-    
-}
-.offre p {
+.offre span {
     font-family: 'Faune-Italic', sans-serif;
     font-size: 1.4rem;
 }
 
-#container_text {
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 1rem;
-    max-width: 30rem;
-    padding-bottom: 1rem;
-}
-
 #container_team {
-    padding-top: 0rem;
-    padding-bottom: 0rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -315,12 +317,11 @@ li {
 
 #container_team img {
     width: 30vw;
-    padding-bottom: 1rem;
 }
 
 #container_accueil {
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    margin-top: 3.5rem;
+    margin-bottom: 3rem;
     position: relative;
     width: calc(100vw - 8rem);
     height: 70vh;
@@ -357,14 +358,14 @@ li {
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: center;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0.5rem;
     max-width: 50rem;
 }
 .article {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
     margin-bottom: 1rem;
@@ -377,17 +378,13 @@ li {
 }
 .article img {
     width: 11rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
-.article p {
-    color: #fec37e;
-    font-family: 'Faune-Bold', sans-serif;
-    font-size: 1rem;
-}
-
-
-
-
+/* .article span { */
+/*     color: #fec37e; */
+/*     font-family: 'Faune-Bold', sans-serif; */
+/*     font-size: 1rem; */
+/* } */
 
 
 
@@ -415,11 +412,16 @@ li {
     font-family: 'Faune-Bold', sans-serif;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 1rem;
+    margin-top: 1rem;
     max-width: 70rem;
-    padding-bottom: 1rem;
+    margin-bottom: 3.5rem;
     font-size: 1.05rem;
 }
+
+#container_partenaires p {
+    max-width: 70rem;
+}
+
 #container_partenaires span {
     margin-left: 0.4rem;
     margin-right: 0.4rem;

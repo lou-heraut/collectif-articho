@@ -173,10 +173,8 @@
     transform: rotate(-30deg);
 }
 #footer_rejoindre h1 {
-    margin-top: 0rem;
     font-family: 'Faune-Bold', sans-serif;
     font-size: 1.5rem;
-    margin-bottom: 0.2rem;
 }
 #footer_rejoindre sup {
     font-family: 'Faune-Regular', sans-serif;

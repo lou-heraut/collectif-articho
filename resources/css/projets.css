@@ -27,7 +27,7 @@
 }
 
 #projets_tab a.selected {
-    background: url("../../resources/statics/assets/subtab_selected.svg") center/cover no-repeat;
+    background: url("/resources/statics/assets/subtab_selected.svg") center/cover no-repeat;
     background-size: 6rem;
     background-position-y: bottom;
     color: #213589;
@@ -92,7 +92,7 @@ a:focus {
     text-align: center;
 }
 
-.overlay h2 {
+.overlay span {
     color: white;
     font-family: 'Faune-Black', sans-serif;
     font-size: 2rem;
