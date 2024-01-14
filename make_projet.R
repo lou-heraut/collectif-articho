@@ -36,7 +36,7 @@ for (projet_drive_path in Projets_drive_path) {
     dir.create(projet_resource_dir)
     
     title =
-        paste0('<h1 class="text_center" style="line-height: 110%;">',
+        paste0('<h1 class="text_center">',
                readLines(file.path(projet_drive_path, "titre.txt")),
                '</h1>')
     Projet_title = c(Projet_title, title)

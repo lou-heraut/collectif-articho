@@ -95,7 +95,7 @@ a:focus {
 .overlay span {
     color: white;
     font-family: 'Faune-Black', sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 0;
     padding: 0;
 }
@@ -229,6 +229,10 @@ a:focus {
 
     #container_projet_info_back {
 	max-width: 90vw;
+    }
+
+    #container_projet_info {
+	justify-content: center;
     }
     
 } 
