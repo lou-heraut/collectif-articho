@@ -51,6 +51,17 @@ body {
     font-size: 1rem;
 }
 
+i {
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Faune-Italic', sans-serif;
+}
+
+b {
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Faune-Bold', sans-serif;
+}
 
 h1 {
     font-weight: normal;
