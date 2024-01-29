@@ -88,18 +88,39 @@ a:focus {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* align-items: center; */
+    /* text-align: center; */
 }
 
-.overlay span {
+.overlay h2 {
+    color: #fec37e;
+    font-family: 'Faune-Regular', sans-serif;
+    font-size: 1.3rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 0;
+    line-height: 130%;
+}
+
+.overlay h3 {
     color: white;
     font-family: 'Faune-Black', sans-serif;
-    font-size: 1.5rem;
-    margin: 0;
+    font-size: 2.3rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
     padding: 0;
+    line-height: 100%;
 }
 
+.overlay h4 {
+    color: white;
+    font-family: 'Faune-Bold', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 0;
+    line-height: 100%; 
+}
 
 
 
@@ -139,8 +160,8 @@ a:focus {
     align-items: center;
     justify-content: start;
     margin-top: 1.2rem;
-    margin-left: 0rem;
-    margin-right: 0rem;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
     margin-bottom: 1.2rem;
     gap: 1rem;
     overflow: hidden;
@@ -178,6 +199,10 @@ a:focus {
 }
 
 
+p {
+    max-width: 50vw;
+}
+
 
 
 
@@ -214,6 +239,11 @@ a:focus {
     #container_projets {
 	max-width: 100%;
     }
+
+    .overlay h1 {
+	font-size: 2rem;
+    }
+    
     .projet_thumbnail {
 	width: 100%;
 	height: 65vw;
@@ -224,7 +254,7 @@ a:focus {
 	height: 70vw;
     }
     .container_img {
-	max-width: 85vw;
+	max-width: 100vw;
     }
 
     #container_projet_info_back {
