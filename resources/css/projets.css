@@ -260,6 +260,11 @@ p {
     #container_projet_info_back {
 	max-width: 90vw;
     }
+
+
+    p {
+	max-width: none;
+    }
     
 } 
 

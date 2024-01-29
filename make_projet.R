@@ -67,7 +67,8 @@ for (tab_drive_path in Tab_drive_path) {
             title_text =
                 readLines(file.path(projet_drive_path, "titre.txt"))
             title =
-                paste0('<h1 class="text_center">', title_text, '</h1>')
+                paste0('<h1 class="text_center text_compact">',
+                       title_text, '</h1>')
             Projet_title = c(Projet_title, title_text)
             projet = gsub("[$]TITLE[$]", title, projet)
 
@@ -76,7 +77,8 @@ for (tab_drive_path in Tab_drive_path) {
                              file.path(projet_drive_path,
                                        "soustitre.txt")))
             subtitle =
-                paste0('<h2 class="text_center">', subtitle_text, '</h2>')
+                paste0('<h2 class="text_center text_compact">',
+                       subtitle_text, '</h2>')
             Projet_subtitle = c(Projet_subtitle, subtitle_text)
             projet = gsub("[$]SUBTITLE[$]", subtitle, projet)
 

@@ -67,7 +67,6 @@ h1 {
     font-weight: normal;
     font-family: 'Faune-Bold', sans-serif;
     font-size: 3.2rem;
-    
     margin-top: 0rem;
     margin-left: auto;
     margin-right: auto;
@@ -135,6 +134,12 @@ li {
 
 .text_center {
     text-align: center;
+}
+
+.text_compact {
+    line-height: 100%;
+    max-width: 50vw;
+    margin-bottom: 0.5rem;
 }
 
 hr {
@@ -449,6 +454,10 @@ button:hover .notif {
 
 
 @media (max-width: 768px) {
+
+    .text_compact {
+	max-width: none;
+    }
     
     .container {
 	margin-left: 1rem;
