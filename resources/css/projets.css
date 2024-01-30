@@ -1,5 +1,5 @@
 
-#projets_tab {
+.tab_bar {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -9,7 +9,7 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-#projets_tab a {
+.tab_bar a {
     position: relative;
     background-color: #ffffff;
     color: #959dbf;
@@ -26,7 +26,7 @@
     align-items: center;
 }
 
-#projets_tab a.selected {
+.tab_bar a.selected {
     background: url("/resources/statics/assets/subtab_selected.svg") center/cover no-repeat;
     background-size: 6rem;
     background-position-y: bottom;
@@ -34,7 +34,7 @@
     font-weight: normal;
 }
 
-#projets_tab a:hover,
+.tab_bar a:hover,
 a:focus {
     color: #213589;
 }
@@ -88,8 +88,6 @@ a:focus {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
-    /* text-align: center; */
 }
 
 .overlay h2 {
@@ -184,6 +182,7 @@ a:focus {
     margin-left: 1.3rem;
     margin-right: 1.3rem;
     margin-bottom: 0.1rem;
+    max-width: 25vw;
     z-index: 1;
 }
 .projet_info b {

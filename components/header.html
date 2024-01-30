@@ -3,41 +3,74 @@
 <div id="header_tab">
     
     <div onmouseover="showMenu('menu_projets')" onmouseleave="hideMenu('menu_projets')">
-        <a id="header_tab_projets" class="tab" href="/pages/projets.html"
-	   onclick="selectTab(['header_tab_projets', 'projets'])">
+        <a id="header_tab-projets" class="tab" href="/pages/projets.html"
+	   onclick="selectTab(['header_tab-projets', 'projets'])">
 	    <span>Projets</span>
         </a>
         <div id="menu_projets" class="menu" onmouseover="showMenu('menu_projets')" onmouseleave="hideMenu('menu_projets')">
             <div id="container_menu">
-		<a id="header_tab_amenagements" class="subtab" href="/pages/projets/amenagements.html"
-		   onclick="selectTab(['header_tab_projets', 'header_tab_amenagements', 'projets_amenagements'])">
+		<a id="header_subtab-amenagements" class="subtab" href="/pages/projets/amenagements.html"
+		   onclick="selectTab(['header_tab-projets', 'header_subtab-amenagements', 'projets_subtab-amenagements'])">
 		    <span>Aménagements</span>
 		</a>
-		<a id="header_tab_microarchitectures" class="subtab" href="/pages/projets/microarchitectures.html"
-		   onclick="selectTab(['header_tab_projets', 'header_tab_microarchitectures', 'projets_microarchitectures'])">
+		<a id="header_subtab-microarchitectures" class="subtab" href="/pages/projets/microarchitectures.html"
+		   onclick="selectTab(['header_tab-projets', 'header_subtab-microarchitectures', 'projets_subtab-microarchitectures'])">
                     <span>Microarchitectures</span>
                 </a>
-		<a id="header_tab_signaletiques" class="subtab" href="/pages/projets/signaletiques.html"
-		   onclick="selectTab(['header_tab_projets', 'header_tab_signaletiques', 'projets_signaletique'])">
+		<a id="header_subtab-signaletiques" class="subtab" href="/pages/projets/signaletiques.html"
+		   onclick="selectTab(['header_tab-projets', 'header_subtab-signaletiques', 'projets_subtab-signaletique'])">
 		    <span>Signalétiques</span>
 		</a>
-                <a id="header_tab_chantiers_participatifs" class="subtab" href="/pages/projets/chantiers_participatifs.html"
-		   onclick="selectTab(['header_tab_projets', 'header_tab_chantiers_participatifs', 'projets_chantiers_participatifs'])">
+                <a id="header_subtab-chantiers_participatifs" class="subtab" href="/pages/projets/chantiers_participatifs.html"
+		   onclick="selectTab(['header_tab-projets', 'header_subtab-chantiers_participatifs', 'projets_subtab-chantiers_participatifs'])">
                     <span>Chantiers participatifs</span>
                 </a>
             </div>
         </div>
     </div>
     
-    <a id="header_tab_mobiliers" class="tab" onclick="selectTab('header_tab_mobiliers')">
-	<span>Mobiliers</span>
-    </a>
-
-    <a id="header_tab_ateliers" class="tab" onclick="selectTab('header_tab_ateliers')">
-	<span>Ateliers</span>
-    </a>
     
-    <a id="header_tab_contact" class="tab" href="/pages/contact.html" onclick="selectTab('header_tab_contact')">
+    <div onmouseover="showMenu('menu_mobiliers')" onmouseleave="hideMenu('menu_mobiliers')">
+        <a id="header_tab-mobiliers" class="tab" href="/pages/mobiliers.html"
+	   onclick="selectTab(['header_tab-mobiliers', 'mobiliers'])">
+	    <span>Mobiliers</span>
+        </a>
+        <div id="menu_mobiliers" class="menu" onmouseover="showMenu('menu_mobiliers')" onmouseleave="hideMenu('menu_mobiliers')">
+            <div id="container_menu">
+		<a id="header_subtab-agencements" class="subtab" href="/pages/mobiliers/agencements.html"
+		   onclick="selectTab(['header_tab-mobiliers', 'header_subtab-agencements', 'mobiliers_subtab-agencements'])">
+		    <span>Agencements</span>
+		</a>
+		<a id="header_subtab-ligne_de_mobilier" class="subtab" href="/pages/mobiliers/ligne_de_mobilier.html"
+		   onclick="selectTab(['header_tab-mobiliers', 'header_subtab-ligne_de_mobilier', 'mobiliers_subtab-ligne_de_mobilier'])">
+                    <span>Ligne de mobilier</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div onmouseover="showMenu('menu_ateliers')" onmouseleave="hideMenu('menu_ateliers')">
+        <a id="header_tab-ateliers" class="tab" href="/pages/ateliers.html"
+	   onclick="selectTab(['header_tab-ateliers', 'ateliers'])">
+	    <span>Ateliers</span>
+        </a>
+        <div id="menu_ateliers" class="menu" onmouseover="showMenu('menu_ateliers')" onmouseleave="hideMenu('menu_ateliers')">
+            <div id="container_menu">
+		<a id="header_subtab-ateliers_sur-mesures" class="subtab" href="/pages/ateliers/ateliers_sur-mesures.html"
+		   onclick="selectTab(['header_tab-ateliers', 'header_subtab-ateliers_sur-mesures', 'ateliers_subtab-ateliers_sur-mesures'])">
+		    <span>Ateliers sur-mesures</span>
+		</a>
+		<a id="header_subtab-notre_offre" class="subtab" href="/pages/ateliers/notre_offre.html"
+		   onclick="selectTab(['header_tab-notre_offre', 'header_subtab-notre_offre', 'ateliers_subtab-notre_offre'])">
+                    <span>Notre offre</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <a id="header_tab-contact" class="tab" href="/pages/contact.html" onclick="selectTab('header_tab-contact')">
 	<span>Nous contacter</span>
     </a>
     
