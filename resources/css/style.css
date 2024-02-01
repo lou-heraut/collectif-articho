@@ -42,6 +42,21 @@
     font-style: normal;
 }
 
+
+
+
+
+
+.material-icons,
+.material-icons-outlined,
+.material-icons-round {
+    color: #302f2f;
+}
+
+
+
+
+
 body {
     margin: 0;
     padding: 0;

@@ -7,6 +7,8 @@
 	<link rel="icon" href="/resources/statics/articho/favicon.ico" type="image/x-icon">
 
 	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Two+Tone|Material+Icons+Sharp">
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -19,9 +21,12 @@
 	<script src="/resources/js/header.js"></script>
 	<script src="/resources/js/footer.js"></script>
 	<script src="/resources/js/mobiliers_tab.js"></script>
+	<script src="/resources/js/gallery.js"></script>
 	
 	
 	<link rel="stylesheet" href="/resources/css/projets.css">
+	<link rel="stylesheet" href="/resources/css/mobiliers.css">
+	
 	
     </head>
     <body>
@@ -35,30 +40,79 @@
 	    <div class="tab_bar" id="mobiliers_tab"></div>
 
 	    <div id="container_projets">
-		<a class="projet_thumbnail" href="/pages/mobiliers/ligne_de_mobilier/table_basse.html">
-		    <div class="overlay"><h2>Ligne de mobilier</h2><h3>TABLE BASSE</h3><h4></h4></div>
-		    <img src="/resources/images/mobiliers/ligne_de_mobilier/table_basse/1.JPG">
-		</a>
+		<div class="mobilier">
+		    <div class="bunch_title"><h2>Table basse</h2><h3>340 €</h3><a id="commander" href="/pages/contact.html" onclick="selectTab('header_tab-contact')">
+			    <span class="material-icons-outlined">shopping_bag</span>
+			    <h4>Commander</h4>
+			</a>
+		    </div><span class="modality">Sur commande, quand une série est disponible ou passer une commande de 5 pièces minimum</span> <div class="bunch_info"><span><b>Dimensions</b></br>Longueur 100 cm</br>Largeur 60 cm</br>Hauteur 45 cm</span><span><b>Matériaux</b></br>Issus du réemploi</br>Contreplaqué pin maritime et Valchromat coloré</span></div><div class="gallery-container"><img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_basse/1.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_basse/2.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_basse/3.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_basse/4.jpg">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_basse/5.jpg"><div class="navigation">
+			    <button class="nav-button material-icons-outlined" onclick="plusSlides(-1)" style="transform: rotate(90deg);">expand_circle_down</button>
+			    <span class="dot active" onclick="currentSlide(1)"></span><span class="dot" onclick="currentSlide(2)"></span>
+<span class="dot" onclick="currentSlide(3)"></span>
+<span class="dot" onclick="currentSlide(4)"></span>
+<span class="dot" onclick="currentSlide(5)"></span><button class="nav-button material-icons-outlined" onclick="plusSlides(1)" style="transform: rotate(-90deg);">expand_circle_down</button>
+			</div></div>
+</div>
 
-		<a class="projet_thumbnail" href="/pages/mobiliers/ligne_de_mobilier/table_haute.html">
-		    <div class="overlay"><h2>Ligne de mobilier</h2><h3>TABLE HAUTE</h3><h4></h4></div>
-		    <img src="/resources/images/mobiliers/ligne_de_mobilier/table_haute/1.JPG">
-		</a>
+		<div class="mobilier">
+		    <div class="bunch_title"><h2>Table haute</h2><h3>950 €</h3><a id="commander" href="/pages/contact.html" onclick="selectTab('header_tab-contact')">
+			    <span class="material-icons-outlined">shopping_bag</span>
+			    <h4>Commander</h4>
+			</a>
+		    </div><span class="modality">Sur commande, 1 pièce minimum</span> <div class="bunch_info"><span><b>Dimensions</b></br>Longueur 140 cm</br>Largeur 70 cm</br>Hauteur 72 cm</span><span><b>Matériaux</b></br>Issus du réemploi</br>Contreplaqué de bouleau filmé noir</span></div><div class="gallery-container"><img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_haute/1.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_haute/2.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_haute/3.JPG"><div class="navigation">
+			    <button class="nav-button material-icons-outlined" onclick="plusSlides(-1)" style="transform: rotate(90deg);">expand_circle_down</button>
+			    <span class="dot active" onclick="currentSlide(1)"></span><span class="dot" onclick="currentSlide(2)"></span>
+<span class="dot" onclick="currentSlide(3)"></span><button class="nav-button material-icons-outlined" onclick="plusSlides(1)" style="transform: rotate(-90deg);">expand_circle_down</button>
+			</div></div>
+</div>
 
-		<a class="projet_thumbnail" href="/pages/mobiliers/ligne_de_mobilier/tabouret_tapissé.html">
-		    <div class="overlay"><h2>Ligne de mobilier</h2><h3>TABOURET TAPISSÉ</h3><h4></h4></div>
-		    <img src="/resources/images/mobiliers/ligne_de_mobilier/tabouret_tapissé/1.JPG">
-		</a>
+		<div class="mobilier">
+		    <div class="bunch_title"><h2>Tabouret tapissé</h2><h3>265 €</h3><a id="commander" href="/pages/contact.html" onclick="selectTab('header_tab-contact')">
+			    <span class="material-icons-outlined">shopping_bag</span>
+			    <h4>Commander</h4>
+			</a>
+		    </div><span class="modality"></br>Sur commande, quand une série est disponible ou passer une commande de 10 pièces minimum</br>Collaboration avec Chrystèle Linage (tapissière)</span> <div class="bunch_info"><span><b>Dimensions</b></br>Diamètre de l'assise 29 cm</br>Diamètre de l’emprise au sol 48 cm</br>Hauteur 48 cm</span><span><b>Matériaux</b></br>Issus du réemploi</br>Tissus, contreplaqué et Valchromat</span></div><div class="gallery-container"><img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/tabouret_tapissé/1.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/tabouret_tapissé/2.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/tabouret_tapissé/4.jpg"><div class="navigation">
+			    <button class="nav-button material-icons-outlined" onclick="plusSlides(-1)" style="transform: rotate(90deg);">expand_circle_down</button>
+			    <span class="dot active" onclick="currentSlide(1)"></span><span class="dot" onclick="currentSlide(2)"></span>
+<span class="dot" onclick="currentSlide(3)"></span><button class="nav-button material-icons-outlined" onclick="plusSlides(1)" style="transform: rotate(-90deg);">expand_circle_down</button>
+			</div></div>
+</div>
 
-		<a class="projet_thumbnail" href="/pages/mobiliers/ligne_de_mobilier/luminaire_suspendu.html">
-		    <div class="overlay"><h2>Ligne de mobilier</h2><h3>LUMINAIRE SUSPENDU</h3><h4></h4></div>
-		    <img src="/resources/images/mobiliers/ligne_de_mobilier/luminaire_suspendu/1.jpg">
-		</a>
+		<div class="mobilier">
+		    <div class="bunch_title"><h2>Luminaire suspendu</h2><h3>290 €</h3><a id="commander" href="/pages/contact.html" onclick="selectTab('header_tab-contact')">
+			    <span class="material-icons-outlined">shopping_bag</span>
+			    <h4>Commander</h4>
+			</a>
+		    </div><span class="modality">Sur commande, 1 pièce minimum</span> <div class="bunch_info"><span><b>Dimensions</b></br>Environ 26 cm de hauteur</br>Diamètre 15,5 cm</span><span><b>Matériaux</b></br>Issus du réemploi</br>Contreplaqué pin maritime</span></div><div class="gallery-container"><img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/luminaire_suspendu/1.jpg">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/luminaire_suspendu/2.jpg"><div class="navigation">
+			    <button class="nav-button material-icons-outlined" onclick="plusSlides(-1)" style="transform: rotate(90deg);">expand_circle_down</button>
+			    <span class="dot active" onclick="currentSlide(1)"></span><span class="dot" onclick="currentSlide(2)"></span><button class="nav-button material-icons-outlined" onclick="plusSlides(1)" style="transform: rotate(-90deg);">expand_circle_down</button>
+			</div></div>
+</div>
 
-		<a class="projet_thumbnail" href="/pages/mobiliers/ligne_de_mobilier/tabouret.html">
-		    <div class="overlay"><h2>Ligne de mobilier</h2><h3>TABOURET</h3><h4></h4></div>
-		    <img src="/resources/images/mobiliers/ligne_de_mobilier/tabouret/1.JPG">
-		</a>
+		<div class="mobilier">
+		    <div class="bunch_title"><h2>Tabouret</h2><h3>175 €</h3><a id="commander" href="/pages/contact.html" onclick="selectTab('header_tab-contact')">
+			    <span class="material-icons-outlined">shopping_bag</span>
+			    <h4>Commander</h4>
+			</a>
+		    </div><span class="modality">Sur commande, commande de 10 pièces minimum</span> <div class="bunch_info"><span><b>Dimensions</b></br>Diamètre de l'assise 29 cm</br>Diamètre de l’emprise au sol 48 cm</br>Hauteur 45 cm</span><span><b>Matériaux</b></br>Issus du réemploi</br>Contreplaqué et Valchromat coloré</span></div><div class="gallery-container"><img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/tabouret/1.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/tabouret/2.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/tabouret/3.JPG">
+<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/tabouret/4.jpg"><div class="navigation">
+			    <button class="nav-button material-icons-outlined" onclick="plusSlides(-1)" style="transform: rotate(90deg);">expand_circle_down</button>
+			    <span class="dot active" onclick="currentSlide(1)"></span><span class="dot" onclick="currentSlide(2)"></span>
+<span class="dot" onclick="currentSlide(3)"></span>
+<span class="dot" onclick="currentSlide(4)"></span><button class="nav-button material-icons-outlined" onclick="plusSlides(1)" style="transform: rotate(-90deg);">expand_circle_down</button>
+			</div></div>
+</div>
 	    </div> 
 
 	</div>
