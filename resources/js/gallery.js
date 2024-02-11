@@ -1,31 +1,30 @@
-let slideIndex = 1;
-  showSlides(slideIndex);
 
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
+function plusSlides(n, button) {
+    const container = button.parentNode.parentNode;
+    let slideIndex = parseInt(container.dataset.index);
+    showSlides(slideIndex += n, button);
+}
 
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
+function showSlides(n, button) {
+    const container = button.parentNode.parentNode;
     let i;
-    const slides = document.getElementsByClassName("image");
-    const dots = document.getElementsByClassName("dot");
-    
+    const slides = container.getElementsByClassName("image");
+    const dots = container.getElementsByClassName("dot");
+
     if (n > slides.length) {
-      slideIndex = 1;
+        n = 1;
     }
     if (n < 1) {
-      slideIndex = slides.length;
+        n = slides.length;
     }
     for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+        slides[i].style.display = "none";
     }
     for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
+        dots[i].classList.remove("active");
     }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }
+    slides[n - 1].style.display = "block";
+    dots[n - 1].classList.add("active");
+
+    container.dataset.index = n;
+}

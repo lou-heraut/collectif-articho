@@ -95,9 +95,9 @@ for (tab_drive_path in Tab_drive_path) {
                 file.copy(img_path, file.path(folder_resource_dir, img))
 
                 Folders_nImg = c(Folders_nImg,
-                                 paste0('<span class="dot" onclick="currentSlide(',
+                                 paste0('<span class="dot" onclick="showSlides(',
                                         2:length(img),
-                                        ')"></span>', collapse="\n"))
+                                        ', this)"></span>', collapse="\n"))
                 
                 img = paste0(paste0('<img class="image active" src="/',
                                     folder_resource_dir, '/',
@@ -235,6 +235,7 @@ for (tab_drive_path in Tab_drive_path) {
                 paste0(
                     paste0(
                         '		<div class="mobilier">
+                    <div class="text-container">
 		    <div class="bunch_title">',
                     Folders_title,
                     Folders_prix,
@@ -248,14 +249,15 @@ for (tab_drive_path in Tab_drive_path) {
                     Folders_dimensions,
                     Folders_materiaux,
                     '</div>',
-                    '<div class="gallery-container">',
+                    '</div>',
+                    '<div class="gallery-container" data-index="1">',
                     Folders_img,
                     
                     '<div class="navigation">
-			    <button class="nav-button material-icons-outlined" onclick="plusSlides(-1)" style="transform: rotate(90deg);">expand_circle_down</button>
-			    <span class="dot active" onclick="currentSlide(1)"></span>',
+			    <button class="nav-button material-icons-outlined" onclick="plusSlides(-1, this)" style="transform: rotate(90deg);">expand_circle_down</button>
+			    <span class="dot active" onclick="showSlides(1, this)"></span>',
                     Folders_nImg,
-                    '<button class="nav-button material-icons-outlined" onclick="plusSlides(1)" style="transform: rotate(-90deg);">expand_circle_down</button>
+                    '<button class="nav-button material-icons-outlined" onclick="plusSlides(1, this)" style="transform: rotate(-90deg);">expand_circle_down</button>
 			</div>',
                     '</div>\n</div>'),
                     collapse="\n\n")
