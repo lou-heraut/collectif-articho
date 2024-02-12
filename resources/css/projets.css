@@ -325,6 +325,15 @@ p {
     #container_projet_info_back {
 	max-width: 90vw;
     }
+    #container_projet_info {
+	flex-direction: column;
+	align-items: start;
+    }
+    .projet_info {
+	max-width: none;
+	display: flex;
+	flex-direction: column;
+    }
 
 
     p {

@@ -17,20 +17,6 @@
     color: #213589;
 }
 
-#plaquette #circle {
-    position: absolute;
-    background: #fec37e;
-    z-index: -1;
-    border-radius: 50%;
-    height: 5rem;
-    width: 5rem;
-    opacity: 0;
-}
-
-#plaquette:hover #circle {
-    opacity: 1;
-}
-
 
 @media (max-width: 768px) {
 
