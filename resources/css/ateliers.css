@@ -1,0 +1,41 @@
+
+
+#plaquette {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+
+#plaquette img {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+#plaquette h2 {
+    line-height: 100%;
+    font-family: 'Faune-Black', sans-serif;
+    color: #213589;
+}
+
+#plaquette #circle {
+    position: absolute;
+    background: #fec37e;
+    z-index: -1;
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+    opacity: 0;
+}
+
+#plaquette:hover #circle {
+    opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+
+
+    
+    
+}
+

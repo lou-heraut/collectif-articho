@@ -39,6 +39,12 @@ a:focus {
     color: #213589;
 }
 
+
+
+
+
+
+
 #container_projets {
     display: flex;
     flex-direction: row;
@@ -75,7 +81,35 @@ a:focus {
     opacity: 1;
 }
 
-.overlay {
+.choice-bunch {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;   
+}
+.choice_thumbnail {
+    position: relative;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 40vw;
+    height: 30vw;
+}
+
+.choice_thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.choice_thumbnail:hover .overlay-permanent {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.overlay,
+.overlay-permanent {
     margin: 0;
     padding: 0;
     position: absolute;
@@ -90,6 +124,12 @@ a:focus {
     flex-direction: column;
     justify-content: center;
 }
+.overlay-permanent {
+    background: transparent;
+    opacity: 1;
+    transition: background 0.3s ease;
+}
+
 
 .overlay h2 {
     color: #fec37e;
@@ -100,7 +140,6 @@ a:focus {
     padding: 0;
     line-height: 130%;
 }
-
 .overlay h3 {
     color: white;
     font-family: 'Faune-Black', sans-serif;
@@ -110,7 +149,6 @@ a:focus {
     padding: 0;
     line-height: 100%;
 }
-
 .overlay h4 {
     color: white;
     font-family: 'Faune-Bold', sans-serif;
@@ -121,7 +159,26 @@ a:focus {
     line-height: 100%; 
 }
 
-
+.overlay-permanent h3 {
+    color: white;
+    font-family: 'Faune-Black', sans-serif;
+    font-size: 3rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 0;
+    line-height: 100%;
+    text-align: center;
+}
+.overlay-permanent h4 {
+    color: white;
+    font-family: 'Faune-Bold', sans-serif;
+    font-size: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 0;
+    line-height: 100%;
+    text-align: center;
+}
 
 
 #container_main_img {
@@ -240,6 +297,14 @@ p {
 	max-width: 100%;
     }
 
+    .choice-bunch {
+	flex-direction: column;
+    }
+    .choice_thumbnail {
+	width: 90vw;
+	height: 70vw;
+    }
+    
     .overlay h1 {
 	font-size: 2rem;
     }

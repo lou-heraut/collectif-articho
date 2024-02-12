@@ -2,10 +2,14 @@
 drive_dir = "drive"
 pages_dir = "pages"
 resource_dir = file.path("resources", "images")
-folder_defautl_path = file.path(pages_dir, "default_folder.html")
-folders_defautl_path = file.path(pages_dir, "default_folders.html")
-folder_default = readLines(folder_defautl_path)
-folders_default = readLines(folders_defautl_path)
+
+projet_defautl_path = file.path(pages_dir, "default_projet.html")
+projets_defautl_path = file.path(pages_dir, "default_projets.html")
+mobiliers_defautl_path = file.path(pages_dir, "default_mobiliers.html")
+
+projet_default = readLines(projet_defautl_path)
+projets_default = readLines(projets_defautl_path)
+mobiliers_default = readLines(mobiliers_defautl_path)
 
 Tab_drive_path = list.files(drive_dir, full.names=TRUE)
 
@@ -68,7 +72,7 @@ for (tab_drive_path in Tab_drive_path) {
 
                 # folder_drive_path = Folders_drive_path[1]
                 
-                folder = folder_default
+                # folder = folder_default
                 folder_name = tolower(
                     gsub(" ", "_",
                          readLines(file.path(folder_drive_path,
@@ -158,7 +162,7 @@ for (tab_drive_path in Tab_drive_path) {
 
             
             
-            folders = folders_default
+            folders = mobiliers_default
             folders_path = file.path(pages_dir,
                                      to_link(tab),
                                      paste0(to_link(subtab),
@@ -185,50 +189,6 @@ for (tab_drive_path in Tab_drive_path) {
                            paste0('	<link rel="stylesheet" href="/resources/css/',
                                   to_link(tab), '.css">'),
                            folders)
-
-
-
-
-
-# 		<div class="mobilier">
-# 		    <div class="bunch_title">
-# 			<h2>Table haute</h2>
-# 			<h3>950 €</h3>
-# 			<a id="commander" href="/pages/contact.html" onclick="selectTab('header_tab-contact')">
-# 			    <span class="material-icons-outlined">shopping_bag</span>
-# 			    <h4>Commander</h4>
-# 			</a>
-# 		    </div> 
-# 		    <span class="higher-line">Sur commande : 1 pièce minimum</span>
-# 		    <div class="bunch_info">
-# 			<span><b>Dimensions</b></br>
-# 			    - Longueur 140 cm</br>
-# 			    - Largeur 70 cm</br>
-# 			    - Hauteur 72 cm</br></span>
-# 			<span><b>Matériaux</b></br>
-# 			    Issus du réemploi</br>
-# 			    Contreplaqué de bouleau filmé noir</span>
-# 		    </div>
-# 		    <div class="gallery-container">
-# 			<img class="image active" src="/resources/images/mobiliers/ligne_de_mobilier/table_haute/1.JPG">
-# 			<img class="image" src="/resources/images/mobiliers/ligne_de_mobilier/table_haute/2.JPG">
-# 			<img class="image" src="/resources/images/mobiliers/ligne_de_mobilier/table_haute/3.JPG">
-
-# 			<div class="navigation">
-# 			    <button class="nav-button material-icons-outlined" onclick="plusSlides(-1)"
-# 				    style="transform: rotate(90deg);">expand_circle_down</button>
-# 			    <span class="dot active" onclick="currentSlide(1)"></span>
-# 			    <span class="dot" onclick="currentSlide(2)"></span>
-# 			    <span class="dot" onclick="currentSlide(3)"></span>
-# 			    <button class="nav-button material-icons-outlined" onclick="plusSlides(1)"
-# 			    style="transform: rotate(-90deg);">expand_circle_down</button>
-#                                                                                        </div>
-# #
-
-    
-# 		    </div>
-# 		</div>
-
 
             
             Folders =
@@ -285,7 +245,7 @@ for (tab_drive_path in Tab_drive_path) {
             Folder_subtitle = c()
             
             for (folder_drive_path in Folders_drive_path) {
-                folder = folder_default
+                folder = projet_default
                 folder_name = tolower(
                     gsub(" ", "_",
                          readLines(file.path(folder_drive_path,
@@ -374,7 +334,7 @@ for (tab_drive_path in Tab_drive_path) {
             }
 
 
-            folders = folders_default
+            folders = projets_default
             folders_path = file.path(pages_dir,
                                      to_link(tab),
                                      paste0(to_link(subtab),
@@ -416,53 +376,34 @@ for (tab_drive_path in Tab_drive_path) {
     }
 
 
-    
+    if (!(tab %in% c("Mobiliers", "Ateliers"))) {
 
-    folders = folders_default
-    folders_path = file.path(pages_dir,
-                             paste0(to_link(tab),
-                                    ".html"))
-
-    folders = gsub(".*[$]JS[$]",
-                   paste0('	<script src="/resources/js/',
-                          to_link(tab), '_tab.js"></script>'),
-                   folders)
-
-    if (subtab == "Mobiliers") {
-        folders = gsub(".*[$]CSS[$]",
-                       paste0('<link rel="stylesheet" href="/resources/css/',
-                              to_link(tab), '.css">'),
+        folders = projets_default
+        folders_path = file.path(pages_dir,
+                                 paste0(to_link(tab),
+                                        ".html"))
+        folders = gsub(".*[$]JS[$]",
+                       paste0('	<script src="/resources/js/',
+                              to_link(tab), '_tab.js"></script>'),
                        folders)
-    } else {
         folders = gsub(".*[$]CSS[$]", "", folders)
-    }
-
-    folders = gsub(".*[$]TITLE[$]",
-                   paste0('	    <h1 class="text_center">',
-                          tab, '</h1>'),
-                   folders)
-    
-    folders = gsub(".*[$]TABBAR[$]",
-                   paste0('	    <div class="tab_bar" id="',
-                          to_link(tab), '_tab"></div>'),
-                   folders)
-
-    
-    if (subtab == "Mobiliers") {
-        Folder = ""
-    } else {
+        folders = gsub(".*[$]TITLE[$]",
+                       paste0('	    <h1 class="text_center">',
+                              tab, '</h1>'),
+                       folders)
+        folders = gsub(".*[$]TABBAR[$]",
+                       paste0('	    <div class="tab_bar" id="',
+                              to_link(tab), '_tab"></div>'),
+                       folders)
         Folder =
             paste0(paste0('		<a class="projet_thumbnail" href="/', Folders_path, '">
 		    <div class="overlay"><h2>', Folders_type, '</h2><h3>', Folders_title, '</h3><h4>', Folders_subtitle, '</h4></div>
 		    <img src="/', Folders_img, '">
 		</a>'), collapse="\n\n")
+        folders = gsub(".*[$]PROJET[$]", Folder, folders)
+
+        writeLines(folders, folders_path)
     }
-    folders = gsub(".*[$]PROJET[$]", Folder, folders)
-
-    
-
-    writeLines(folders, folders_path)
-    
 }
 
 

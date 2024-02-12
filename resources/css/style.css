@@ -172,6 +172,8 @@ hr {
 a {
     color: #213589;
     text-decoration: none;
+    cursor: pointer;
+    touch-action: manipulation;
 }
 a:focus {
     color: #213589;
