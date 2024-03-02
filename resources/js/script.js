@@ -1,14 +1,47 @@
-fetch('/components/header.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('header').innerHTML = html;
-    });
+Promise.all([
+    fetch('/components/header.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('header').innerHTML = html;
+        }),
 
-fetch('/components/footer.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('footer').innerHTML = html;
-    });
+    fetch('/components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('footer').innerHTML = html;
+        }),
+
+    fetch('/components/ateliers_tab.html')
+        .then(response => response.text())
+        .then(html => {
+            const ateliersTab = document.getElementById('ateliers_tab');
+            if (ateliersTab) {
+                ateliersTab.innerHTML = html;
+            }    
+        }),
+
+    fetch('/components/projets_tab.html')
+        .then(response => response.text())
+        .then(html => {
+            const projetsTab = document.getElementById('projets_tab');
+            if (projetsTab) {
+                projetsTab.innerHTML = html;
+            }
+        }),
+
+    fetch('/components/mobiliers_tab.html')
+        .then(response => response.text())
+        .then(html => {
+            const mobiliersTab = document.getElementById('mobiliers_tab');
+            if (mobiliersTab) {
+                mobiliersTab.innerHTML = html;
+            } 
+        })
+])
+.then(() => {
+    checkURL();
+})
+
 
 
 
@@ -39,65 +72,50 @@ function restoreImage(img, suffix) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    function checkURL() {
 
-	var url = window.location.href;
-	var path = new URL(url).pathname;
-	var page = path.split('/').pop().replace('.html', '');
+function checkURL() {
 
-	// console.log(page);
-	
-	if (page === "projets") {
-	    var IDs = ['header_tab-projets', 'projets_subtab-projets']
-	} else if (page === "amenagements") {
-	    var IDs = ['header_tab-projets', 'header_subtab-amenagements', 'projets_subtab-amenagements']
-	} else if (page === "microarchitectures") {
-	    var IDs = ['header_tab-projets', 'header_subtab-microarchitectures', 'projets_subtab-microarchitectures']
-	} else if (page === "signaletiques") {
-	    var IDs = ['header_tab-projets', 'header_subtab-signaletiques', 'projets_subtab-signaletique']
-	} else if (page === "chantiers_participatifs") {
-	    var IDs = ['header_tab-projets', 'header_subtab-chantiers_participatifs', 'projets_subtab-chantiers_participatifs']
+    var url = window.location.href;
+    var path = new URL(url).pathname;
+    var page = path.split('/').pop().replace('.html', '');
 
-	} else if (page === "mobiliers") {
-	    var IDs = ['header_tab-mobiliers']
-	} else if (page === "agencements") {
-	    var IDs = ['header_tab-mobiliers', 'header_subtab-agencements', 'mobiliers_subtab-agencements']
-	} else if (page === "ligne_de_mobilier") {
-	    var IDs = ['header_tab-mobiliers', 'header_subtab-ligne_de_mobilier', 'mobiliers_subtab-ligne_de_mobilier']
+    if (page === "projets") {
+	var IDs = ['header_tab-projets', 'projets_subtab-projets']
+    } else if (page === "amenagements") {
+	var IDs = ['header_tab-projets', 'header_subtab-amenagements', 'projets_subtab-amenagements']
+    } else if (page === "microarchitectures") {
+	var IDs = ['header_tab-projets', 'header_subtab-microarchitectures', 'projets_subtab-microarchitectures']
+    } else if (page === "signaletiques") {
+	var IDs = ['header_tab-projets', 'header_subtab-signaletiques', 'projets_subtab-signaletique']
+    } else if (page === "chantiers_participatifs") {
+	var IDs = ['header_tab-projets', 'header_subtab-chantiers_participatifs', 'projets_subtab-chantiers_participatifs']
 
-	} else if (page === "ateliers") {
-	    var IDs = ['header_tab-ateliers']
-	} else if (page === "ateliers_sur-mesures") {
-	    var IDs = ['header_tab-ateliers', 'header_subtab-ateliers_sur-mesures', 'ateliers_subtab-ateliers_sur-mesures']
-	} else if (page === "notre_offre") {
-	    var IDs = ['header_tab-ateliers', 'header_subtab-notre_offre', 'ateliers_subtab-notre_offre']
+    } else if (page === "mobiliers") {
+	var IDs = ['header_tab-mobiliers']
+    } else if (page === "agencements") {
+	var IDs = ['header_tab-mobiliers', 'header_subtab-agencements', 'mobiliers_subtab-agencements']
+    } else if (page === "ligne_de_mobilier") {
+	var IDs = ['header_tab-mobiliers', 'header_subtab-ligne_de_mobilier', 'mobiliers_subtab-ligne_de_mobilier']
 
-	} else if (page === "contact") {
-	    var IDs = ['header_tab-contact']
+    } else if (page === "ateliers") {
+	var IDs = ['header_tab-ateliers']
+    } else if (page === "ateliers_sur-mesures") {
+	var IDs = ['header_tab-ateliers', 'header_subtab-ateliers_sur-mesures', 'ateliers_subtab-ateliers_sur-mesures']
+    } else if (page === "notre_offre") {
+	var IDs = ['header_tab-ateliers', 'header_subtab-notre_offre', 'ateliers_subtab-notre_offre']
 
-	} else {
-	    var IDs = null
-	}
+    } else if (page === "contact") {
+	var IDs = ['header_tab-contact']
 
-	$('a.selected').removeClass('selected');
-
-	// console.log($('a.selected'));
-	
-	if (IDs) {
-	    IDs.forEach(function (id) {
-
-		// console.log(id);
-		
-		$("#" + id)[0].classList.add('selected'); 
-	    });
-	}
+    } else {
+	var IDs = null
     }
 
-    // window.addEventListener('hashchange', checkURL);
-    // window.addEventListener('popstate', checkURL);
-    window.addEventListener('load', checkURL);
+    $('a.selected').removeClass('selected');
 
-    // checkURL();
-    
-});
+    if (IDs) {
+	IDs.forEach(function (id) {
+	    $("#" + id)[0].classList.add('selected'); 
+	});
+    }
+}
