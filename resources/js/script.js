@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	var url = window.location.href;
 	var path = new URL(url).pathname;
 	var page = path.split('/').pop().replace('.html', '');
+
+	// console.log(page);
 	
 	if (page === "projets") {
 	    var IDs = ['header_tab-projets', 'projets_subtab-projets']
@@ -79,14 +81,23 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	$('a.selected').removeClass('selected');
+
+	// console.log($('a.selected'));
+	
 	if (IDs) {
 	    IDs.forEach(function (id) {
+
+		// console.log(id);
+		
 		$("#" + id)[0].classList.add('selected'); 
 	    });
 	}
     }
 
-    window.addEventListener('hashchange', checkURL);
-    window.addEventListener('popstate', checkURL);
+    // window.addEventListener('hashchange', checkURL);
+    // window.addEventListener('popstate', checkURL);
     window.addEventListener('load', checkURL);
+
+    // checkURL();
+    
 });
