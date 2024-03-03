@@ -261,20 +261,14 @@ a:hover .circle {
 }
 
 
-
-
-
-
 .container {
     margin-left: 4rem;
     margin-right: 4rem;
-
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
 
 #slideshow {
@@ -325,6 +319,58 @@ a:hover .circle {
 .valeur img {
     padding-left: 3rem;
     padding-right: 3rem;
+}
+
+#valeur_img_1 {
+    -webkit-transform: rotate(-12deg); /* Safari and Chrome */
+    -moz-transform: rotate(-12deg); /* Firefox */
+    -ms-transform: rotate(-12deg); /* IE */
+    -o-transform: rotate(-12deg); /* Opera */
+    transform: rotate(-12deg); /* Standard syntax */
+    transform-origin: center center;
+    -webkit-transform-origin: center center; /* Safari and Chrome */
+    -moz-transform-origin: center center; /* Firefox */
+    -ms-transform-origin: center center; /* IE */
+    -o-transform-origin: center center; /* Opera */
+}
+
+#valeur_img_2 {
+    -webkit-transform: rotate(9deg); /* Safari and Chrome */
+    -moz-transform: rotate(9deg); /* Firefox */
+    -ms-transform: rotate(9deg); /* IE */
+    -o-transform: rotate(9deg); /* Opera */
+    transform: rotate(9deg); /* Standard syntax */
+    transform-origin: center center;
+    -webkit-transform-origin: center center; /* Safari and Chrome */
+    -moz-transform-origin: center center; /* Firefox */
+    -ms-transform-origin: center center; /* IE */
+    -o-transform-origin: center center; /* Opera */
+}
+
+#valeur_img_3 {
+    -webkit-transform: rotate(52deg); /* Safari and Chrome */
+    -moz-transform: rotate(52deg); /* Firefox */
+    -ms-transform: rotate(52deg); /* IE */
+    -o-transform: rotate(52deg); /* Opera */
+    transform: rotate(52deg); /* Standard syntax */
+    transform-origin: center center;
+    -webkit-transform-origin: center center; /* Safari and Chrome */
+    -moz-transform-origin: center center; /* Firefox */
+    -ms-transform-origin: center center; /* IE */
+    -o-transform-origin: center center; /* Opera */
+}
+
+#valeur_img_4 {
+    -webkit-transform: rotate(110deg); /* Safari and Chrome */
+    -moz-transform: rotate(110deg); /* Firefox */
+    -ms-transform: rotate(110deg); /* IE */
+    -o-transform: rotate(110deg); /* Opera */
+    transform: rotate(110deg); /* Standard syntax */
+    transform-origin: center center;
+    -webkit-transform-origin: center center; /* Safari and Chrome */
+    -moz-transform-origin: center center; /* Firefox */
+    -ms-transform-origin: center center; /* IE */
+    -o-transform-origin: center center; /* Opera */
 }
 
 
@@ -511,6 +557,9 @@ a:hover .circle {
     #slideshow {
 	padding-right: 1rem;
 	padding-left: 1rem;
+    }
+    #slideshow figure img {
+	height: 40vh;
     }
     
     #container_accueil {

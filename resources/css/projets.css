@@ -305,6 +305,9 @@ p {
     .overlay h1 {
 	font-size: 2rem;
     }
+    .overlay h3 {
+	font-size: 2.1rem;
+    }
     
     .projet_thumbnail {
 	width: 100%;
@@ -313,7 +316,7 @@ p {
 
     #container_main_img {
 	max-width: 100vw;
-	height: 70vw;
+	height: 100vw;
     }
     .container_img {
 	max-width: 100vw;

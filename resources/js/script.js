@@ -77,7 +77,17 @@ function checkURL() {
 
     var url = window.location.href;
     var path = new URL(url).pathname;
-    var page = path.split('/').pop().replace('.html', '');
+    var parts = path.split('/');
+    var pageIndex = parts.indexOf('pages') + 1;
+
+    if (parts[pageIndex + 1]) {
+	var page = parts[pageIndex + 1];
+    } else {
+	var page = parts[pageIndex];
+    }
+    page = page.replace('.html', '');
+
+    console.log(page);
 
     if (page === "projets") {
 	var IDs = ['header_tab-projets', 'projets_subtab-projets']
@@ -115,7 +125,11 @@ function checkURL() {
 
     if (IDs) {
 	IDs.forEach(function (id) {
-	    $("#" + id)[0].classList.add('selected'); 
+	    var div = $("#" + id)[0];
+	    console.log(div);
+	    if (div) {
+		div.classList.add('selected');
+	    }
 	});
     }
 }
