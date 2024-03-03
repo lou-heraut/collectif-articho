@@ -142,8 +142,10 @@ a:focus {
 @media (max-width: 768px) {
     #header {
 	justify-content: center;
+	padding-top: 0.2rem;
 	padding-left: 1rem;
-	padding-right: 1rem; 
+	padding-right: 1rem;
+	padding-bottom: 1rem;
 	width: calc(100vw - 2rem);
     }
     
