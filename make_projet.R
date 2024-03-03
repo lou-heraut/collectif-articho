@@ -199,7 +199,7 @@ for (tab_drive_path in Tab_drive_path) {
 		    <div class="bunch_title">',
                     Folders_title,
                     Folders_prix,
-                    '<a id="commander" href="/pages/contact.html" onclick="selectTab(\'header_tab-contact\')">
+                    '<a id="commander" href="/pages/contact" onclick="selectTab(\'header_tab-contact\')">
 			    <span class="material-icons-outlined">shopping_bag</span>
 			    <h4>Commander</h4>
 			</a>
