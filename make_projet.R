@@ -158,8 +158,6 @@ for (tab_drive_path in Tab_drive_path) {
                 Folders_materiaux = c(Folders_materiaux, materiaux)
             }
 
-
-
             
             
             folders = mobiliers_default
@@ -273,9 +271,8 @@ for (tab_drive_path in Tab_drive_path) {
                 folder = gsub("[$]TITLE[$]", title, folder)
 
                 subtitle_text =
-                    stringr::str_to_sentence(readLines(
-                                 file.path(folder_drive_path,
-                                           "soustitre.txt")))
+                    readLines(file.path(folder_drive_path,
+                                        "soustitre.txt"))
                 subtitle =
                     paste0('<h2 class="text_center text_compact">',
                            subtitle_text, '</h2>')
@@ -317,10 +314,11 @@ for (tab_drive_path in Tab_drive_path) {
                                collapse="\n")
                 folder = gsub(".*[$]INFO[$]", infos, folder)
 
-                p = paste0('<p>',
-                           readLines(file.path(folder_drive_path,
-                                               "text.txt")),
-                           '</p>')
+
+                text = readLines(file.path(folder_drive_path,
+                                           "text.txt"))
+                text = text[nchar(text) > 0]
+                p = paste0('<p>', text, '</p>')
                 p = paste0("	    ", p, collapse="\n")
                 folder = gsub(".*[$]P[$]", p, folder)
                 
