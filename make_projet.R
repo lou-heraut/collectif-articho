@@ -166,10 +166,14 @@ for (tab_drive_path in Tab_drive_path) {
                                      paste0(to_link(subtab),
                                             ".html"))
 
+            # folders = gsub(".*[$]JS[$]",
+            #                paste0('	<script src="/resources/js/',
+            #                       to_link(tab),
+            #                       '_tab.js"></script>\n',
+            #                       '	<script src="/resources/js/gallery.js"></script>'),
+            #                folders)
             folders = gsub(".*[$]JS[$]",
-                           paste0('	<script src="/resources/js/',
-                                  to_link(tab),
-                                  '_tab.js"></script>\n',
+                           paste0('	</script>\n',
                                   '	<script src="/resources/js/gallery.js"></script>'),
                            folders)
 
@@ -196,10 +200,10 @@ for (tab_drive_path in Tab_drive_path) {
                     <div class="text-container">
 		    <div class="bunch_title">',
                     Folders_title,
-                    Folders_prix,
-                    '<a id="commander" href="/pages/contact" onclick="selectTab(\'header_tab-contact\')">
+                    # Folders_prix,
+                    '<a id="commander" href="/pages/contact.html" onclick="selectTab(\'header_tab-contact\')">
 			    <span class="material-icons-outlined">shopping_bag</span>
-			    <h4>Commander</h4>
+			    <h4>Prix sur demande</h4>
 			</a>
 		    </div>',
                     Folders_modality,
@@ -338,11 +342,14 @@ for (tab_drive_path in Tab_drive_path) {
                                      paste0(to_link(subtab),
                                             ".html"))
 
+            # folders = gsub(".*[$]JS[$]",
+            #                paste0('	<script src="/resources/js/',
+            #                       to_link(tab), '_tab.js"></script>'),
+            #                folders)
             folders = gsub(".*[$]JS[$]",
-                           paste0('	<script src="/resources/js/',
-                                  to_link(tab), '_tab.js"></script>'),
+                           paste0(''),
                            folders)
-
+            
             folders = gsub(".*[$]TITLE[$]",
                            paste0('	    <h1 class="text_center">',
                                   tab, '</h1>'),
