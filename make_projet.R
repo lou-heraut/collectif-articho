@@ -13,9 +13,16 @@ mobiliers_default = readLines(mobiliers_defautl_path)
 
 Tab_drive_path = list.files(drive_dir, full.names=TRUE)
 
-to_link = function (str) {
-    tolower(gsub(" ", "_", gsub("à", "a", gsub("(é)|(è)", "e", str))))
+# to_link = function (str) {
+#     tolower(gsub(" ", "_", gsub("à", "a", gsub("(é)|(è)", "e", str))))
+# }
+to_link = function(str) {
+    gsub(" ", "_",
+         tolower(
+             iconv(str, "UTF-8", "ASCII//TRANSLIT")
+         ), fixed=TRUE)
 }
+
 
 
 

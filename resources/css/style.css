@@ -413,10 +413,11 @@ a:hover .circle {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    width: 32rem;
 }
 
 #container_team img {
-    width: 30vw;
+    width: 100%;
 }
 
 #container_accueil {
@@ -525,7 +526,7 @@ a:hover .circle {
     margin-left: 0.4rem;
     margin-right: 0.4rem;
     color: #fec37e;
-    font-family: 'Faune-Black', sans-serif;
+    font-family: 'Faune-Regular', sans-serif;
 }
 #container_partenaires it {
     margin-left: 0.2rem;
@@ -533,8 +534,6 @@ a:hover .circle {
     font-family: 'Faune-Italic', sans-serif;
     font-size: 0.95rem;
 }
-
-
 
 @media (max-width: 768px) {
 
