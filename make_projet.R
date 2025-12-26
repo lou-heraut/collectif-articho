@@ -3,6 +3,8 @@ drive_dir = "drive"
 pages_dir = "pages"
 resource_dir = file.path("resources", "images")
 
+allowed_img_format = c("png", "PNG", "jpg", "jpeg", "JPEG")
+
 projet_defautl_path = file.path(pages_dir, "default_projet.html")
 projets_defautl_path = file.path(pages_dir, "default_projets.html")
 mobiliers_defautl_path = file.path(pages_dir, "default_mobiliers.html")
@@ -24,7 +26,9 @@ to_link = function(str) {
 }
 
 
-
+allowed_img_format_pattern = paste0("[.](",
+                                    paste0(allowed_img_format,
+                                           collapse=")|("), ")$")
 
 ## TAB _______________________________________________________________
 for (tab_drive_path in Tab_drive_path) {
@@ -100,7 +104,8 @@ for (tab_drive_path in Tab_drive_path) {
 
                 
                 img_path = list.files(folder_drive_path,
-                                      pattern="[[:digit:]]+",
+                                      # pattern="[[:digit:]]+",
+                                      pattern=allowed_img_format_pattern,
                                       full.names=TRUE)
                 img = basename(img_path)
                 file.copy(img_path, file.path(folder_resource_dir, img))
@@ -291,7 +296,8 @@ for (tab_drive_path in Tab_drive_path) {
                 folder = gsub("[$]SUBTITLE[$]", subtitle, folder)
                 
                 img_path = list.files(folder_drive_path,
-                                      pattern="[[:digit:]]+",
+                                      # pattern="[[:digit:]]+",
+                                      pattern=allowed_img_format_pattern,
                                       full.names=TRUE)
                 img = basename(img_path)
                 file.copy(img_path, file.path(folder_resource_dir, img))

@@ -271,6 +271,7 @@ p {
     margin-top: 2.5rem;
     margin-left: auto;
     margin-right: auto;
+    max-width: 50vw;
 }
 .container_img {
     position: relative;
@@ -279,7 +280,7 @@ p {
     margin-right: auto;
     margin-bottom: 0.5rem;
     max-width: 50vw;
-    height: auto;
+    height: calc(100vh - 7rem);
 }
 .container_img img {
     width: 100%;
