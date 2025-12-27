@@ -413,7 +413,7 @@ a:hover .circle {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 32rem;
+    max-width: 32rem;
 }
 
 #container_team img {
@@ -478,7 +478,7 @@ a:hover .circle {
     text-align: center;
 }
 .article img {
-    width: 11rem;
+    max-width: 11rem;
     margin-bottom: 0.4rem;
 }
 /* .article span { */
@@ -491,7 +491,7 @@ a:hover .circle {
 
 #container_soutiens {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -576,12 +576,12 @@ a:hover .circle {
 	font-size: 1.8rem;
     }
 
-    #container_team img {
-	width: 100%;
-	padding-bottom: 1rem;
+    .article img {
+	max-width: 10rem;
+    }	
+    .soutiens img {
+	max-width: 10rem;
     }
-
-    
     
 } 
 
