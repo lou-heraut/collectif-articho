@@ -3,7 +3,7 @@ drive_dir = "drive"
 pages_dir = "pages"
 resource_dir = file.path("resources", "images")
 
-allowed_img_format = c("png", "PNG", "jpg", "jpeg", "JPEG")
+allowed_img_format = c("png", "PNG", "jpg", "JPG", "jpeg", "JPEG")
 
 projet_defautl_path = file.path(pages_dir, "default_projet.html")
 projets_defautl_path = file.path(pages_dir, "default_projets.html")
