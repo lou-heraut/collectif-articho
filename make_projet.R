@@ -18,13 +18,24 @@ Tab_drive_path = list.files(drive_dir, full.names=TRUE)
 # to_link = function (str) {
 #     tolower(gsub(" ", "_", gsub("à", "a", gsub("(é)|(è)", "e", str))))
 # }
-to_link = function(str) {
-    gsub(" ", "_",
-         tolower(
-             iconv(str, "UTF-8", "ASCII//TRANSLIT")
-         ), fixed=TRUE)
+to_link = function (str) {
+    s = gsub("[‘’ʼ´`]", "-", str)            # apostrophes -> tiret
+    s = gsub("[̀-ͯ]", "", s)                  # accents combinants (drive macOS en NFD)
+    translit = iconv(s, "UTF-8", "ASCII//TRANSLIT")
+    s = ifelse(is.na(translit), s, translit)  # iconv peut rendre NA
+    s = tolower(s)
+    s = gsub("[^a-z0-9]+", "-", s)            # tout le reste -> tiret
+    s = gsub("-{2,}", "-", s)
+    gsub("^-+|-+$", "", s)
 }
 
+## Un titre tient sur une ligne, et les espaces de bord viennent du drive.
+read_txt = function (path) trimws(readLines(path, warn=FALSE)[1])
+
+
+## Inventaire des URL produites, pour garder une trace lisible dans git des
+## renommages de titres.
+Inventory = c()
 
 allowed_img_format_pattern = paste0("[.](",
                                     paste0(allowed_img_format,
@@ -66,6 +77,14 @@ for (tab_drive_path in Tab_drive_path) {
         unlink(folders_dir, recursive=TRUE)
         dir.create(folders_dir, recursive=TRUE)
 
+        ## Au niveau du sous-onglet, sinon un projet renomme laisse ses images
+        ## derriere lui.
+        subtab_resource_dir = file.path(resource_dir,
+                                       to_link(tab),
+                                       to_link(subtab))
+        unlink(subtab_resource_dir, recursive=TRUE)
+        dir.create(subtab_resource_dir, recursive=TRUE)
+
 
 ## MOBILIER ____________________________________________________________        
         if (subtab == "Ligne de mobilier") {
@@ -84,21 +103,18 @@ for (tab_drive_path in Tab_drive_path) {
                 # folder_drive_path = Folders_drive_path[1]
                 
                 # folder = folder_default
-                folder_name = tolower(
-                    gsub(" ", "_",
-                         readLines(file.path(folder_drive_path,
-                                             "titre.txt"))))
+                folder_name = to_link(
+                    read_txt(file.path(folder_drive_path, "titre.txt")))
 
                 folder_resource_dir = file.path(resource_dir,
                                                 to_link(tab),
                                                 to_link(subtab),
                                                 folder_name)
-                unlink(folder_resource_dir, recursive=TRUE)
                 dir.create(folder_resource_dir, recursive=TRUE)
                 
 
                 title =
-                    readLines(file.path(folder_drive_path, "titre.txt"))
+                    read_txt(file.path(folder_drive_path, "titre.txt"))
                 Folders_title = c(Folders_title, paste0("<h2>", title, "</h2>"))
 
 
@@ -124,7 +140,7 @@ for (tab_drive_path in Tab_drive_path) {
 
                 
                 infos = readLines(file.path(folder_drive_path,
-                                            "info.txt"))
+                                            "info.txt"), warn=FALSE)
                 infos = infos[nchar(infos) > 0]
 
                 prix = gsub("(.*[:][[:space:]]*)|([[:space:]]*$)",
@@ -185,8 +201,7 @@ for (tab_drive_path in Tab_drive_path) {
             #                       '	<script src="/resources/js/gallery.js"></script>'),
             #                folders)
             folders = gsub(".*[$]JS[$]",
-                           paste0('	</script>\n',
-                                  '	<script src="/resources/js/gallery.js"></script>'),
+                           '	<script src="/resources/js/gallery.js"></script>',
                            folders)
 
             folders = gsub(".*[$]TITLE[$]",
@@ -260,26 +275,26 @@ for (tab_drive_path in Tab_drive_path) {
             
             for (folder_drive_path in Folders_drive_path) {
                 folder = projet_default
-                folder_name = tolower(
-                    gsub(" ", "_",
-                         readLines(file.path(folder_drive_path,
-                                             "titre.txt"))))
+                folder_name = to_link(
+                    read_txt(file.path(folder_drive_path, "titre.txt")))
                 folder_path = paste0(file.path(folders_dir,
                                                folder_name),
                                      ".html")
                 Folder_path = c(Folder_path, folder_path)
+                Inventory = c(Inventory,
+                              paste(sub("^drive/", "", folder_drive_path),
+                                    paste0("/", folder_path), sep="\t"))
 
                 folder_resource_dir = file.path(resource_dir,
                                                 to_link(tab),
                                                 to_link(subtab),
                                                 folder_name)
-                unlink(folder_resource_dir, recursive=TRUE)
                 dir.create(folder_resource_dir, recursive=TRUE)
                 
                 Folder_type = c(Folder_type, subtab)
 
                 title_text =
-                    readLines(file.path(folder_drive_path, "titre.txt"))
+                    read_txt(file.path(folder_drive_path, "titre.txt"))
                 title =
                     paste0('<h1 class="text_center text_compact">',
                            title_text, '</h1>')
@@ -287,8 +302,8 @@ for (tab_drive_path in Tab_drive_path) {
                 folder = gsub("[$]TITLE[$]", title, folder)
 
                 subtitle_text =
-                    readLines(file.path(folder_drive_path,
-                                        "soustitre.txt"))
+                    read_txt(file.path(folder_drive_path,
+                                       "soustitre.txt"))
                 subtitle =
                     paste0('<h2 class="text_center text_compact">',
                            subtitle_text, '</h2>')
@@ -311,7 +326,7 @@ for (tab_drive_path in Tab_drive_path) {
                 folder = gsub("[$]MAIN_IMG[$]",  main_img, folder)
                 
                 infos = readLines(file.path(folder_drive_path,
-                                            "info.txt"))
+                                            "info.txt"), warn=FALSE)
                 infos = infos[nchar(infos) > 0]
                 
                 for (i in 1:length(infos)) {
@@ -333,7 +348,7 @@ for (tab_drive_path in Tab_drive_path) {
 
 
                 text = readLines(file.path(folder_drive_path,
-                                           "text.txt"))
+                                           "text.txt"), warn=FALSE)
                 text = text[nchar(text) > 0]
                 p = paste0('<p>', text, '</p>')
                 p = paste0("	    ", p, collapse="\n")
@@ -400,10 +415,7 @@ for (tab_drive_path in Tab_drive_path) {
         folders_path = file.path(pages_dir,
                                  paste0(to_link(tab),
                                         ".html"))
-        folders = gsub(".*[$]JS[$]",
-                       paste0('	<script src="/resources/js/',
-                              to_link(tab), '_tab.js"></script>'),
-                       folders)
+        folders = gsub(".*[$]JS[$]", "", folders)
         folders = gsub(".*[$]CSS[$]", "", folders)
         folders = gsub(".*[$]TITLE[$]",
                        paste0('	    <h1 class="text_center">',
@@ -433,6 +445,56 @@ for (tab_drive_path in Tab_drive_path) {
 
 
 
+
+
+
+writeLines(c("dossier_drive\turl", Inventory), "urls.tsv")
+
+
+## REDIRECTIONS ______________________________________________________
+## GitHub Pages ne sait pas faire de 301 : on ecrit un stub a l'ancienne
+## URL. A garder ici, apres la boucle, car elle vide les repertoires.
+write_redirect = function (from_path, to_url) {
+    dir.create(dirname(from_path), recursive=TRUE, showWarnings=FALSE)
+    writeLines(c(
+        '<!DOCTYPE html>',
+        '<html lang="fr">',
+        '    <head>',
+        '\t<meta charset="UTF-8">',
+        paste0('\t<meta http-equiv="refresh" content="0; url=', to_url, '">'),
+        paste0('\t<link rel="canonical" href="https://collectifarticho.com',
+               to_url, '">'),
+        '\t<meta name="robots" content="noindex, follow">',
+        '\t<title>ARTI/CHÔ</title>',
+        paste0('\t<script>location.replace("', to_url, '");</script>'),
+        '    </head>',
+        paste0('    <body><p>Cette page a déménagé : <a href="',
+               to_url, '">', to_url, '</a></p></body>'),
+        '</html>'), from_path)
+}
+
+redirects_path = "redirects.txt"
+if (file.exists(redirects_path)) {
+    Redirect = readLines(redirects_path, warn=FALSE)
+    Redirect = Redirect[nchar(trimws(Redirect)) > 0 &
+                        !grepl("^[[:space:]]*#", Redirect)]
+    for (redirect in Redirect) {
+        field = trimws(unlist(strsplit(redirect, "\t")))
+        if (length(field) != 2) {
+            warning("redirects.txt, ligne ignoree : ", redirect)
+            next
+        }
+        from_path = sub("^/", "", field[1])
+        if (file.exists(from_path)) {
+            warning("redirection ignoree, page reelle : ", field[1])
+            next
+        }
+        if (!file.exists(sub("^/", "", field[2]))) {
+            warning("redirection vers une cible inexistante : ", field[2])
+        }
+        write_redirect(from_path, field[2])
+    }
+}
 
 
 
