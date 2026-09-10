@@ -97,22 +97,24 @@ function checkURL() {
 	var IDs = ['header_tab-projets', 'header_subtab-microarchitectures', 'projets_subtab-microarchitectures']
     } else if (page === "signaletiques") {
 	var IDs = ['header_tab-projets', 'header_subtab-signaletiques', 'projets_subtab-signaletique']
-    } else if (page === "chantiers_participatifs") {
-	var IDs = ['header_tab-projets', 'header_subtab-chantiers_participatifs', 'projets_subtab-chantiers_participatifs']
+    } else if (page === "chantiers-participatifs") {
+	var IDs = ['header_tab-projets', 'header_subtab-chantiers-participatifs', 'projets_subtab-chantiers-participatifs']
+    } else if (page === "demarche-experimentale") {
+	var IDs = ['header_tab-projets', 'header_subtab-demarche-experimentale', 'projets_subtab-demarche-experimentale']
 
     } else if (page === "mobiliers") {
 	var IDs = ['header_tab-mobiliers']
     } else if (page === "agencements") {
 	var IDs = ['header_tab-mobiliers', 'header_subtab-agencements', 'mobiliers_subtab-agencements']
-    } else if (page === "ligne_de_mobilier") {
-	var IDs = ['header_tab-mobiliers', 'header_subtab-ligne_de_mobilier', 'mobiliers_subtab-ligne_de_mobilier']
+    } else if (page === "ligne-de-mobilier") {
+	var IDs = ['header_tab-mobiliers', 'header_subtab-ligne-de-mobilier', 'mobiliers_subtab-ligne-de-mobilier']
 
     } else if (page === "ateliers") {
 	var IDs = ['header_tab-ateliers']
-    } else if (page === "ateliers_sur-mesures") {
-	var IDs = ['header_tab-ateliers', 'header_subtab-ateliers_sur-mesures', 'ateliers_subtab-ateliers_sur-mesures']
-    } else if (page === "notre_offre") {
-	var IDs = ['header_tab-ateliers', 'header_subtab-notre_offre', 'ateliers_subtab-notre_offre']
+    } else if (page === "ateliers-sur-mesures") {
+	var IDs = ['header_tab-ateliers', 'header_subtab-ateliers-sur-mesures', 'ateliers_subtab-ateliers-sur-mesures']
+    } else if (page === "notre-offre") {
+	var IDs = ['header_tab-ateliers', 'header_subtab-notre-offre', 'ateliers_subtab-notre-offre']
 
     } else if (page === "contact") {
 	var IDs = ['header_tab-contact']

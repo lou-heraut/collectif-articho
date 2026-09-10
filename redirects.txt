@@ -1,0 +1,3 @@
+# ancienne_url<TAB>nouvelle_url, chemins absolus depuis la racine du site.
+# QR code deja imprime, ne jamais retirer cette ligne.
+/pages/mobiliers/agencements/tpmobile.html	/pages/mobiliers/agencements/tpmob-theatre-public-mobile.html
