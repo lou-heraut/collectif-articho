@@ -78,18 +78,34 @@ Trace en production de ce piège : `pages/projets/signaletiques/` contient
 dans la barre d'adresse alors que ses octets disent `caapp_a_cite` suivi d'un accent
 flottant.
 
-## Conventions de slug (état actuel du code)
+## Conventions de slug
 
-Deux fonctions distinctes, c'est la clé pour comprendre le code :
+**Toutes les URL sont en `kebab-case` ASCII.** Une seule fonction, `to_link()`,
+slugifie les onglets, les sous-onglets, les noms de page et les répertoires
+d'images. Elle convertit les apostrophes en tiret, retire les accents combinants du
+drive macOS, translittère en ASCII via `iconv //TRANSLIT` avec garde-fou sur `NA`,
+puis réduit tout le reste à des tirets simples sans tiret de bord.
 
-| ce qui est slugifié | fonction utilisée | résultat |
-|---|---|---|
-| onglet / sous-onglet (donc les répertoires) | `to_link()` : `iconv //TRANSLIT` + `tolower` + espaces vers `_` | ASCII, `snake_case` |
-| page projet / répertoire d'images | `tolower(gsub(" ", "_", titre))` | titre **brut** minusculisé |
+`read_txt()` accompagne : un titre tient sur une ligne et les espaces de bord
+viennent du drive, donc `trimws(readLines(path, warn=FALSE)[1])`. À utiliser pour
+tout `.txt` dont on attend une valeur unique.
 
-Convention de fait dans les chemins : `snake_case`, tirets conservés quand le
-libellé en contient (`ateliers_sur-mesures`, `mini-serres`). La cible décidée est le
-`kebab-case` intégral, voir `PLAN.md`.
+Exemples de ce que ça produit :
+
+```
+TPMob [Théâtre Public Mobile]    ->  tpmob-theatre-public-mobile
+CAAPP A CITÉ (en NFD)            ->  caapp-a-cite
+BORD'HA bureaux                  ->  bord-ha-bureaux
+LA RUCHE QUI DIT OUI!            ->  la-ruche-qui-dit-oui
+LYCÉE DE DEMAIN - S4             ->  lycee-de-demain-s4
+```
+
+Les apostrophes deviennent un tiret plutôt que de disparaître, choix de lisibilité
+assumé contre l'usage des CMS, notamment pour que BORD'HA reste reconnaissable.
+
+**Non assainis** : les noms de fichiers d'images, recopiés verbatim du drive, dont
+15 portent des espaces, accents ou un `©`. Ils fonctionnent, les navigateurs
+encodent. Voir `PLAN.md` P2.4.
 
 ## Gabarits
 
@@ -122,11 +138,16 @@ pages/<onglet>/<sous-onglet>/*.html     resources/images/{projets,mobiliers,atel
 
 ```
 index.html              pages/ateliers.html      pages/mobiliers.html
-components/*.html       pages/a_propos.html      pages/contact.html
-resources/css/*         pages/ateliers/notre_offre.html
-resources/js/*          pages/mentions_legales.html  pages/conditions_generales.html
-resources/statics/*     CNAME  Makefile
+components/*.html       pages/a-propos.html      pages/contact.html
+resources/css/*         pages/notre-offre.html   pages/mentions-legales.html
+resources/js/*          pages/conditions-generales.html
+resources/statics/*     CNAME  Makefile  redirects.txt
 ```
+
+`pages/projets/`, `pages/mobiliers/` et `pages/ateliers/` sont générés à **100 %**,
+ce qui rend leur nettoyage trivial. C'est une propriété à préserver : ne pas y
+remettre de fichier écrit à la main. `notre-offre.html` y vivait et en est sorti
+pour cette raison.
 
 `pages/ateliers.html` et `pages/mobiliers.html` sont à la main parce que le script
 saute volontairement la page d'onglet pour ces deux-là :
@@ -134,18 +155,33 @@ saute volontairement la page d'onglet pour ces deux-là :
 
 ## Le script est destructif
 
-Au début de chaque sous-onglet :
+Au début de chaque sous-onglet, le script vide **et** recrée deux répertoires :
 
 ```r
-unlink(folders_dir, recursive=TRUE) ; dir.create(folders_dir, recursive=TRUE)
+pages/<onglet>/<sous-onglet>/
+resources/images/<onglet>/<sous-onglet>/
 ```
 
-`pages/<onglet>/<sous-onglet>/` est **intégralement vidé** à chaque exécution, et
-`resources/images/<onglet>/<sous-onglet>/<projet>/` l'est par projet.
+Le nettoyage des images est au niveau **sous-onglet** et non par projet, pour qu'un
+projet renommé n'abandonne pas ses images derrière lui.
 
-**Conséquence pratique** : tout fichier ajouté à la main dans ces répertoires
-disparaît au prochain `Rscript make_projet.R`. Tout ce qui doit y vivre, redirections
-comprises, doit être **émis par le script**.
+**Deux conséquences pratiques :**
+
+1. Tout fichier ajouté à la main dans ces répertoires disparaît au prochain
+   `Rscript make_projet.R`. Ce qui doit y vivre, redirections comprises, doit être
+   **émis par le script**.
+2. ⚠️ Cinq fichiers maintenus à la main vivent juste **au-dessus**, au niveau
+   onglet, là où le script ne va jamais. Ne pas les supprimer en nettoyant :
+
+```
+resources/images/mobiliers/{1,2}.jpg                utilises par pages/mobiliers.html
+resources/images/mobiliers/ligne-de-mobilier-intro.jpg   gabarit default_mobiliers
+resources/images/ateliers/{1,2}.jpg                 utilises par pages/ateliers.html
+resources/images/ateliers/plaquette_ARTICHO.pdf     telechargee depuis notre-offre
+```
+
+Un nettoyage manuel doit donc viser `resources/images/<onglet>/*/` et jamais
+`resources/images/<onglet>/`.
 
 ## Navigation
 
@@ -179,7 +215,7 @@ grep -rhoE '(href|src)="/[^"]+"' index.html pages components resources/js \
 
 | | |
 |---|---|
-| remote | `git@github.com:louis-heraut/collectif-articho.git`, branche `main` |
+| remote | `git@github.com:lou-heraut/collectif-articho.git`, branche `main` |
 | hébergeur | **GitHub Pages** (`server: GitHub.com`), publie la racine de `main` |
 | domaine | `collectifarticho.com` via `CNAME` ; `www` vers `lou-heraut.github.io` |
 | DNS | **Google Domains** (`ns-cloud-d*.googledomains.com`), A vers `185.199.10{8,9,10,11}.153` |
@@ -189,6 +225,20 @@ Ce que ça implique : pas de `.htaccess`, pas de `_redirects`, aucune réécritu
 redirection HTTP côté serveur. Une redirection ne peut être qu'un **fichier HTML
 stub** (`meta refresh` plus `link canonical`), servi en 200. Déployer, c'est
 `git push` ; le build Pages prend environ une minute.
+
+Bon à savoir, vérifié en ligne : **GitHub Pages sert les URL sans extension.**
+`/pages/contact` rend 200, tout comme `/pages/mobiliers/agencements/totems`. Utile
+pour tout ce qui doit être imprimé ou dicté.
+
+## Redirections
+
+`redirects.txt` à la racine, une ligne par redirection, `ancienne_url<TAB>nouvelle_url`
+en chemins absolus depuis la racine du site, les `#` pour commenter. Le script le lit
+en dernier et écrit un stub à chaque ancienne URL via `write_redirect()`. Il refuse de
+masquer une page réelle et avertit si la cible n'existe pas.
+
+Une seule entrée à ce jour, celle d'un QR code imprimé dont le titre a été renommé.
+Ne pas la retirer.
 
 ## Commandes
 
@@ -204,5 +254,11 @@ les chemins sont **absolus** (`/components/…`, `/resources/…`), donc ouvrir 
 
 ## Inventaire
 
-72 pages HTML, 59 projets dans `drive/` dont 5 meubles en page unique,
-`resources/images` à environ **1,4 Go** (recopié depuis `drive/` à chaque run).
+73 pages HTML (53 pages projet, 8 listings, 1 stub de redirection, le reste écrit à
+la main ou gabarit), 59 projets dans `drive/` dont 5 meubles en page unique,
+`resources/images` à environ **1,3 Go** et 297 fichiers (recopié depuis `drive/` à
+chaque run).
+
+`urls.tsv`, généré, associe chaque dossier du drive à l'URL produite. Son intérêt est
+dans `git log -p urls.tsv`, qui donne l'historique des renommages de titres sans
+fouiller l'historique de `pages/`.

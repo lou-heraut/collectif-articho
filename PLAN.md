@@ -3,9 +3,30 @@
 Audit du 2026-09-10, recadré le 2026-09-11. Contexte technique (pipeline,
 miroir `drive/`, hébergement, généré vs manuel) dans `CLAUDE.md`, non répété ici.
 
-> **État au 2026-09-11 : P0 est fait**, sur la branche `kebab-urls`, non encore
-> fusionnée ni publiée. Sont faits au passage P1.1, P1.4 et P2.1. Restent ouverts
-> P1.2, P1.3, P2.2, P2.3, P2.4 et les P3.
+> ## État au 2026-09-11
+>
+> **P0 est fait, fusionné dans `main` et publié** (commit de travail `cff5fba`,
+> merge `9ca5bf3`). Faits au passage : **P1.1**, **P1.4**, **P2.1**.
+>
+> **Vérifié en ligne après le build Pages** (215 s, sans erreur) : l'ancienne URL du
+> QR `…/agencements/tpmobile.html` rend 200 et redirige vers
+> `…/tpmob-theatre-public-mobile.html`, qui rend 200 avec le bon titre ; les
+> **418 ressources** référencées par le site répondent sur `collectifarticho.com` ;
+> les anciennes URL rendent 404, comme convenu. Reste le seul test qui compte :
+> **scanner le QR code papier**.
+>
+> Restent ouverts, par ordre de rentabilité : **P1.2** métadonnées des pages projet,
+> **P1.3** page 404 maison, **P2.2** validation du contenu entrant, **P2.3**
+> échappement de `$TITLE$`, **P2.4** noms de fichiers d'images, puis les **P3**.
+>
+> Deux choses découvertes en implémentant, à ne pas reperdre :
+> - 6 fichiers maintenus à la main vivaient dans l'arborescence d'images générée,
+>   dont la plaquette PDF. Voir P0.5 et `CLAUDE.md` § *Le script est destructif*.
+> - Le dépôt a changé de nom côté GitHub, `louis-heraut` devient `lou-heraut`. Le
+>   remote local a été recalé.
+>
+> Pour reprendre : P1.2 a le meilleur rapport visible sur effort, et P1.3 complète
+> naturellement ce commit puisque toutes les anciennes URL sont maintenant mortes.
 
 ## Cadrage validé avec l'association
 
@@ -338,6 +359,18 @@ Lancé sur l'état actuel du dépôt il remonte déjà 2 liens morts préexistan
 (`projets_tab.js`, `ateliers_tab.js`), qui sont le § P1.4 : tant qu'il n'est pas
 corrigé, la sortie attendue est **ces deux lignes et rien d'autre**. Le test 1
 remonte 186 chemins non conformes aujourd'hui et doit être vide après P0 plus P1.1.
+
+### Revenir en arrière si besoin
+
+Le merge est un commit de fusion, donc le retour en arrière prend un `-m 1` :
+
+```sh
+git revert -m 1 9ca5bf3 && git push     # remet les anciennes URL en ligne
+```
+
+À n'envisager que si quelque chose de visible casse. Ça remettrait l'URL du QR code
+en 404, donc ce serait un échange d'un problème contre l'autre : mieux vaut corriger
+en avant.
 
 ### L'inventaire des URL, pour l'historique
 
