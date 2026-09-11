@@ -25,8 +25,10 @@ miroir `drive/`, hébergement, généré vs manuel) dans `CLAUDE.md`, non répé
 > - Le dépôt a changé de nom côté GitHub, `louis-heraut` devient `lou-heraut`. Le
 >   remote local a été recalé.
 >
-> Pour reprendre : P1.2 a le meilleur rapport visible sur effort, et P1.3 complète
-> naturellement ce commit puisque toutes les anciennes URL sont maintenant mortes.
+> **Pour reprendre, commencer par P0.7** : tout le dépôt est publié sur le site
+> public, y compris ces notes et le miroir `drive/`. Ensuite P1.2, meilleur rapport
+> visible sur effort, puis P1.3, qui complète naturellement ce commit puisque toutes
+> les anciennes URL sont maintenant mortes.
 
 ## Cadrage validé avec l'association
 
@@ -359,6 +361,52 @@ Lancé sur l'état actuel du dépôt il remonte déjà 2 liens morts préexistan
 (`projets_tab.js`, `ateliers_tab.js`), qui sont le § P1.4 : tant qu'il n'est pas
 corrigé, la sortie attendue est **ces deux lignes et rien d'autre**. Le test 1
 remonte 186 chemins non conformes aujourd'hui et doit être vide après P0 plus P1.1.
+
+## P0.7 Tout le dépôt est publié 🔴 à arbitrer
+
+**Constaté en ligne le 2026-09-11, pas encore corrigé.** GitHub Pages publie la racine
+de `main` en la passant dans Jekyll, et le dépôt n'a ni `.nojekyll` ni `_config.yml`.
+Donc tout fichier suivi est servi publiquement :
+
+```
+200  /drive/02_Mobiliers/01_Agencements/02_TPMob/info.txt    miroir du Drive, depuis 2024-01-13
+200  /drive/…/1.jpg                                          1,3 Go d'images en double
+200  /CLAUDE.md   /PLAN.md                                   ces notes, ajoutees le 2026-09-11
+200  /CLAUDE.html /PLAN.html                                 les memes, rendues en pages par Jekyll
+200  /make_projet.R  /Makefile  /urls.tsv  /redirects.txt
+404  /drive/01_Projets/.DS_Store                             Jekyll ignore les fichiers en point
+```
+
+Rien de secret : le contenu de `drive/` est celui déjà affiché sur les pages, et les
+notes ne contiennent aucun identifiant. Mais deux choses gênent. Des pages de notes
+internes vivent sur le site vitrine de l'association, indexables par Google. Et le
+miroir brut double le volume publié, ce qui explique probablement une bonne part des
+215 s de build (non mesuré).
+
+Pas corrigé en fin de session parce que c'est une décision sur ce que l'association
+publie, et un redéploiement. Correctif prêt, un `_config.yml` à la racine :
+
+```yaml
+exclude:
+  - drive
+  - CLAUDE.md
+  - PLAN.md
+  - make_projet.R
+  - Makefile
+  - redirects.txt
+  - urls.tsv
+```
+
+`exclude` retire ces chemins de la publication sans toucher au dépôt. Sur le Jekyll de
+GitHub Pages, cette liste remplace celle par défaut (`Gemfile`, `node_modules`,
+`vendor`…), sans effet ici puisque le dépôt n'en contient aucun. `redirects.txt` est
+lu par le script en local, donc l'exclure ne casse pas la redirection : c'est le stub
+généré qui est publié. Ne pas utiliser `.nojekyll` à la place : il désactive Jekyll,
+supprime les `/CLAUDE.html`, mais continue de tout servir brut, `drive/` compris.
+
+Après déploiement, vérifier que `/drive/…/info.txt` et `/PLAN.md` rendent 404, que
+`/pages/mobiliers/agencements/tpmobile.html` rend toujours 200, et relancer le parcours
+des 418 ressources.
 
 ### Revenir en arrière si besoin
 

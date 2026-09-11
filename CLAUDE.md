@@ -226,6 +226,11 @@ redirection HTTP côté serveur. Une redirection ne peut être qu'un **fichier H
 stub** (`meta refresh` plus `link canonical`), servi en 200. Déployer, c'est
 `git push` ; le build Pages prend environ une minute.
 
+⚠️ **Tout fichier suivi par git est publié**, faute de `_config.yml` : `drive/`,
+`make_projet.R`, `CLAUDE.md` et `PLAN.md` sont lisibles sur `collectifarticho.com`, et
+Jekyll rend même les `.md` en pages (`/PLAN.html`). Ne rien committer qu'on ne veut pas
+voir en ligne. Voir `PLAN.md` P0.7.
+
 Bon à savoir, vérifié en ligne : **GitHub Pages sert les URL sans extension.**
 `/pages/contact` rend 200, tout comme `/pages/mobiliers/agencements/totems`. Utile
 pour tout ce qui doit être imprimé ou dicté.
