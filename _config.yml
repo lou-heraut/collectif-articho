@@ -1,0 +1,22 @@
+# Publication GitHub Pages.
+#
+# Le site est du HTML statique genere par make_projet.R, Jekyll ne fait que
+# copier les fichiers. Cette liste retire de la publication ce qui sert a
+# fabriquer ou a documenter le site. Rien n'est supprime du depot.
+exclude:
+  # miroir du Drive de l'association, source du contenu
+  - drive
+  # outillage de generation
+  - make_projet.R
+  - Makefile
+  - redirects.txt
+  - urls.tsv
+  # gabarits lus par make_projet.R, jamais servis
+  - pages/default_projet.html
+  - pages/default_projets.html
+  - pages/default_mobiliers.html
+  # fichier source GIMP de la vignette
+  - resources/images/thumbnail/thumbnail.xcf
+  # notes de travail
+  - CLAUDE.md
+  - PLAN.md
