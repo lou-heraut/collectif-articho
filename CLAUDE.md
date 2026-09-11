@@ -226,10 +226,20 @@ redirection HTTP côté serveur. Une redirection ne peut être qu'un **fichier H
 stub** (`meta refresh` plus `link canonical`), servi en 200. Déployer, c'est
 `git push` ; le build Pages prend environ une minute.
 
-⚠️ **Tout fichier suivi par git est publié**, faute de `_config.yml` : `drive/`,
-`make_projet.R`, `CLAUDE.md` et `PLAN.md` sont lisibles sur `collectifarticho.com`, et
-Jekyll rend même les `.md` en pages (`/PLAN.html`). Ne rien committer qu'on ne veut pas
-voir en ligne. Voir `PLAN.md` P0.7.
+**Ce qui est publié est réglé par `_config.yml`.** GitHub Pages passe le dépôt dans
+Jekyll, qui publie tout fichier suivi sauf ce que liste `exclude` : le miroir `drive/`,
+l'outillage (`make_projet.R`, `Makefile`, `redirects.txt`, `urls.tsv`), les gabarits
+`pages/default_*.html`, le source GIMP de la vignette et ces notes. Rien n'est supprimé
+du dépôt, seulement de la publication.
+
+Deux règles en découlent :
+
+1. Tout nouveau fichier qui ne doit pas être en ligne va dans `exclude`. Sinon il est
+   publié, et un `.md` est même rendu en page HTML indexable.
+2. Considérer qu'un motif peut aussi exclure tout chemin qui **commence** par lui :
+   c'est la règle retenue pour vérifier la liste actuelle. `drive` écarterait donc un
+   futur `drive-truc.html`. Préférer des chemins complets, et avant d'ajouter un motif
+   vérifier qu'aucun fichier à publier ne commence par lui.
 
 Bon à savoir, vérifié en ligne : **GitHub Pages sert les URL sans extension.**
 `/pages/contact` rend 200, tout comme `/pages/mobiliers/agencements/totems`. Utile

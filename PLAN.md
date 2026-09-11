@@ -25,10 +25,14 @@ miroir `drive/`, hébergement, généré vs manuel) dans `CLAUDE.md`, non répé
 > - Le dépôt a changé de nom côté GitHub, `louis-heraut` devient `lou-heraut`. Le
 >   remote local a été recalé.
 >
-> **Pour reprendre, commencer par P0.7** : tout le dépôt est publié sur le site
-> public, y compris ces notes et le miroir `drive/`. Ensuite P1.2, meilleur rapport
-> visible sur effort, puis P1.3, qui complète naturellement ce commit puisque toutes
-> les anciennes URL sont maintenant mortes.
+> **P0.7 est fait aussi** (commit `6dfee0c`) : un `_config.yml` retire de la
+> publication le miroir `drive/`, l'outillage, les gabarits et ces notes. Vérifié en
+> ligne, cache du CDN contourné : les 15 chemins exclus rendent 404, les indispensables
+> et les 418 ressources du site répondent, le stub du QR redirige toujours. 549
+> fichiers ne sont plus publiés sur 996, et le build passe de 216 s à 156 s.
+>
+> **Pour reprendre** : P1.2, meilleur rapport visible sur effort, puis P1.3, qui
+> complète naturellement ce travail puisque toutes les anciennes URL sont mortes.
 
 ## Cadrage validé avec l'association
 
@@ -362,11 +366,11 @@ Lancé sur l'état actuel du dépôt il remonte déjà 2 liens morts préexistan
 corrigé, la sortie attendue est **ces deux lignes et rien d'autre**. Le test 1
 remonte 186 chemins non conformes aujourd'hui et doit être vide après P0 plus P1.1.
 
-## P0.7 Tout le dépôt est publié 🔴 à arbitrer
+## P0.7 Tout le dépôt était publié 🔴 ✅ fait
 
-**Constaté en ligne le 2026-09-11, pas encore corrigé.** GitHub Pages publie la racine
-de `main` en la passant dans Jekyll, et le dépôt n'a ni `.nojekyll` ni `_config.yml`.
-Donc tout fichier suivi est servi publiquement :
+**Constaté puis corrigé le 2026-09-11.** GitHub Pages publie la racine de `main` en la
+passant dans Jekyll, et le dépôt n'avait ni `.nojekyll` ni `_config.yml`. Tout fichier
+suivi était donc servi publiquement :
 
 ```
 200  /drive/02_Mobiliers/01_Agencements/02_TPMob/info.txt    miroir du Drive, depuis 2024-01-13
@@ -383,30 +387,31 @@ internes vivent sur le site vitrine de l'association, indexables par Google. Et 
 miroir brut double le volume publié, ce qui explique probablement une bonne part des
 215 s de build (non mesuré).
 
-Pas corrigé en fin de session parce que c'est une décision sur ce que l'association
-publie, et un redéploiement. Correctif prêt, un `_config.yml` à la racine :
+**Correctif déployé** : `_config.yml` à la racine, dont la liste `exclude` retire de
+la publication, sans rien supprimer du dépôt :
 
-```yaml
-exclude:
-  - drive
-  - CLAUDE.md
-  - PLAN.md
-  - make_projet.R
-  - Makefile
-  - redirects.txt
-  - urls.tsv
-```
+- le miroir `drive/` ;
+- l'outillage : `make_projet.R`, `Makefile`, `redirects.txt`, `urls.tsv` ;
+- les 3 gabarits `pages/default_*.html` ;
+- le source GIMP `resources/images/thumbnail/thumbnail.xcf` ;
+- `CLAUDE.md` et `PLAN.md`.
 
-`exclude` retire ces chemins de la publication sans toucher au dépôt. Sur le Jekyll de
-GitHub Pages, cette liste remplace celle par défaut (`Gemfile`, `node_modules`,
-`vendor`…), sans effet ici puisque le dépôt n'en contient aucun. `redirects.txt` est
-lu par le script en local, donc l'exclure ne casse pas la redirection : c'est le stub
-généré qui est publié. Ne pas utiliser `.nojekyll` à la place : il désactive Jekyll,
-supprime les `/CLAUDE.html`, mais continue de tout servir brut, `drive/` compris.
+Avant de pousser, la liste a été rejouée contre les 996 fichiers suivis, en
+considérant qu'un motif exclut aussi tout chemin qui commence par lui : elle exclut
+exactement les 549 fichiers visés et rien d'autre. `redirects.txt` n'est lu qu'en local
+par le script, donc l'exclure ne casse pas la redirection, c'est le stub généré qui est
+publié. `.nojekyll` n'aurait pas convenu : il désactive Jekyll mais continue de tout
+servir brut, `drive/` compris.
 
-Après déploiement, vérifier que `/drive/…/info.txt` et `/PLAN.md` rendent 404, que
-`/pages/mobiliers/agencements/tpmobile.html` rend toujours 200, et relancer le parcours
-des 418 ressources.
+**Vérifié en ligne après le build** (156 s, contre 216 s avant), en contournant le
+cache du CDN par un paramètre unique à chaque requête :
+
+- les 15 chemins exclus testés rendent 404, dont `/drive/…/info.txt`, `/PLAN.md`,
+  `/PLAN.html` et `/_config.yml` ;
+- les indispensables rendent 200 : l'accueil, le stub du QR, sa page cible, l'image
+  `og:image`, la plaquette PDF, le JS et les composants ;
+- le stub redirige toujours vers `tpmob-theatre-public-mobile.html` ;
+- les 418 ressources référencées par le site répondent.
 
 ### Revenir en arrière si besoin
 
@@ -593,6 +598,32 @@ garder en tête avant d'ajouter beaucoup de projets.
 `tmp.txt` et `.directory` ne sont ni suivis ni ignorés (`tmp.txt~` l'est via `*~`).
 À ajouter au `.gitignore` ou à supprimer. Les 26 `.DS_Store` de `drive/`, eux, sont
 committés : ils viennent du miroir macOS et peuvent être ignorés sans risque.
+
+## P3.5 Fichiers de `resources/` que plus rien n'utilise 🔵
+
+Aucune page, feuille de style ni script ne référence ces 7 fichiers, environ 11 Mo :
+
+```
+4,73 Mo  resources/statics/articho/team.svg
+3,75 Mo  resources/images/thumbnail/thumbnail.xcf         deja exclu de la publication
+1,52 Mo  resources/images/thumbnail/thumbnail_background.png
+0,73 Mo  resources/statics/articho/articho.png
+0,06 Mo  resources/statics/soutiens/dump/agir_laureat-e bloc_carre_2021.png
+0,01 Mo  resources/statics/articho/ARTICHO TEXT.png
+0,00 Mo  resources/statics/assets/info_projet.svg
+```
+
+Probablement des sources graphiques ou d'anciennes versions gardées sous la main. Rien
+d'urgent vu le volume : décider au cas par cas s'il faut les supprimer, les ranger hors
+de `resources/`, ou les ajouter à `exclude`. Ne pas les exclure en bloc sans décision,
+car une future page qui voudrait s'en servir tomberait sur un 404 sans explication.
+
+**Piège pour refaire ce scan.** Une regex qui s'arrête aux espaces ou aux parenthèses
+produit des faux positifs : le premier essai signalait 20 fichiers, dont 13 images bien
+utilisées aux noms du genre `PERMIS VEGETAL (4).jpg`. Il faut lire les valeurs
+d'attribut en entier, inclure `content=` et les `url()` du CSS, compter les variantes
+`_hover` que `changeImage()` construit au survol, et recouper avec un parcours HTTP
+réel, seul juge fiable.
 
 ---
 
